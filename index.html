@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E-Portofolio PPG</title>
+<meta name="description" content="Dokumentasi praktik pembelajaran, refleksi, dan pengembangan profesional guru.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0F2A4A;--sky:#DCEBFA;--bg:#F3F5F8;--white:#fff;--accent:#F2A33A;--text:#1d2b3a;--muted:#5a6b7d;--line:#dbe2ea;
+--head:"Playfair Display",Georgia,serif;--body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:400 17px/1.7 var(--body);color:var(--text);background:var(--bg)}
+h1,h2,h3{font-family:var(--head);color:var(--navy);line-height:1.25;margin:0 0 .6em}
+h3{font-size:1.1rem}a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+#loader{position:fixed;inset:0;background:var(--navy);display:grid;place-items:center;z-index:99;transition:opacity .4s}
+#loader i{width:38px;height:38px;border:4px solid #ffffff44;border-top-color:var(--accent);border-radius:50%;animation:s .8s linear infinite}
+@keyframes s{to{transform:rotate(360deg)}}
+header{position:sticky;top:0;z-index:50;background:var(--navy);color:#fff}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font:700 1.15rem var(--head);text-decoration:none;display:flex;gap:10px;align-items:center}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:4px}
+nav a,nav button{color:#fff;text-decoration:none;font:600 .82rem var(--body);letter-spacing:.02em;padding:10px 12px;border-radius:8px;background:none;border:0;cursor:pointer;display:block}
+nav a:hover,nav button:hover{background:#ffffff1f}
+.dd{position:relative}.dd ul{display:none;position:absolute;right:0;top:100%;flex-direction:column;background:var(--white);border-radius:10px;padding:6px;min-width:170px;box-shadow:0 10px 30px #0f2a4a33}
+.dd:hover ul,.dd.open ul{display:flex}.dd ul a{color:var(--navy)}.dd ul a:hover{background:var(--sky)}
+#burger{display:none;background:none;border:0;color:#fff;font-size:1.7rem;cursor:pointer;padding:6px 10px}
+@media(max-width:900px){#burger{display:block}nav{display:none;position:absolute;left:0;right:0;top:64px;background:var(--navy);padding:8px 20px 16px}
+nav.open{display:block}nav ul{flex-direction:column}.dd ul{display:flex;position:static;background:none;box-shadow:none;padding:0 0 0 14px}.dd ul a{color:#fff}.dd ul a:hover{background:#ffffff1f}}
+main{min-height:70vh;animation:in .35s ease}@keyframes in{from{opacity:0}to{opacity:1}}
+.hero{background:linear-gradient(160deg,var(--navy) 0%,#17406e 100%);color:#fff;padding:72px 0}
+.hero .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center}
+.hero h1{color:#fff;font-size:clamp(2.2rem,5vw,3.6rem);margin-bottom:.3em}
+.hero p.sub{color:#cfe0f3;font-size:1.15rem;max-width:30em}
+.pf{display:flex;flex-direction:column;align-items:center;text-align:center;background:#ffffff12;border:1px solid #ffffff2a;border-radius:20px;padding:32px 24px}
+.pf b{font:600 1.3rem var(--head)}.pf span{color:#cfe0f3;font-size:.98rem}
+.avatar{width:150px;height:150px;border-radius:50%;object-fit:cover;background:var(--sky);display:grid;place-items:center;color:var(--navy);border:4px solid var(--accent);margin-bottom:14px}
+.avatar.lg{width:210px;height:210px;margin:0}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#2a1c00;font-weight:600;text-decoration:none;padding:12px 24px;border-radius:10px;border:0;cursor:pointer;font-size:1rem;font-family:var(--body);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px #0f2a4a33}
+.btn.alt{background:var(--white);color:var(--navy);border:1.5px solid var(--navy)}.btn.alt:hover{background:var(--sky)}
+.btn[aria-disabled=true]{opacity:.45;pointer-events:none}
+section.blk{padding:56px 0}.blk.white{background:var(--white)}
+.card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:28px;margin-bottom:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+a.mc{display:flex;gap:16px;align-items:flex-start;text-decoration:none;background:var(--white);border:1px solid var(--line);border-left:5px solid var(--navy);border-radius:14px;padding:22px;transition:transform .2s,box-shadow .2s,border-color .2s}
+a.mc:hover{transform:translateY(-3px);box-shadow:0 10px 24px #0f2a4a1f;border-left-color:var(--accent)}
+a.mc svg{flex:none;width:30px;height:30px;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+a.mc b{font:600 1.05rem var(--head);color:var(--navy);display:block}a.mc small{color:var(--muted)}
+.tl{list-style:none;display:flex;margin:32px 0 0;padding:0;counter-reset:t}
+.tl li{flex:1;text-align:center;position:relative;padding-top:34px}
+.tl li::before{content:"";position:absolute;top:8px;left:50%;width:18px;height:18px;margin-left:-9px;border-radius:50%;background:var(--navy);border:4px solid var(--sky);z-index:1}
+.tl li::after{content:"";position:absolute;top:16px;left:50%;width:100%;height:3px;background:var(--sky)}
+.tl li:last-child::after{display:none}
+.tl a{text-decoration:none;font-weight:600;color:var(--navy);display:inline-block;padding:4px 8px;border-radius:8px}.tl a:hover{background:var(--sky)}
+@media(max-width:760px){.tl{flex-direction:column;border-left:3px solid var(--sky);margin-left:10px}.tl li{text-align:left;padding:0 0 22px 28px}
+.tl li::before{left:-11px;top:4px;margin:0}.tl li::after{display:none}.hero .wrap{grid-template-columns:1fr}}
+.crumb{font-size:.92rem;color:var(--muted);padding:20px 0 0}.crumb a{color:var(--navy)}
+.pagehead{padding:20px 0 8px}.pagehead p{color:var(--muted);max-width:44em}
+.two{display:grid;grid-template-columns:1.7fr 1fr;gap:24px;align-items:start}@media(max-width:860px){.two{grid-template-columns:1fr}}
+.prev{width:100%;height:560px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+.empty{display:grid;place-items:center;text-align:center;min-height:240px;border:2px dashed var(--line);border-radius:12px;color:var(--muted);padding:20px;background:var(--bg)}
+.side{display:flex;flex-direction:column;gap:12px}.side .btn{justify-content:center}
+.vid{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000}.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vid.empty{background:var(--bg);aspect-ratio:16/9}
+table{width:100%;border-collapse:collapse}td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}td:first-child{font-weight:600;color:var(--navy);width:38%}
+.ana h3{margin:1.4em 0 .2em;padding-left:12px;border-left:4px solid var(--accent)}.ana h3:first-of-type{margin-top:.4em}
+.ana p{margin:0;white-space:pre-line}
+.ph{color:#8a97a6;font-style:italic}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.gal button{padding:0;border:0;background:var(--sky);border-radius:12px;overflow:hidden;aspect-ratio:4/3;cursor:pointer;transition:transform .2s}.gal button:hover{transform:scale(1.02)}
+.gal img{width:100%;height:100%;object-fit:cover;display:block}
+.act{display:grid;grid-template-columns:240px 1fr;gap:22px}@media(max-width:700px){.act{grid-template-columns:1fr}}
+.act img,.act .noimg{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:var(--sky)}
+.act .noimg{display:grid;place-items:center;color:var(--muted);font-size:.9rem}
+.act dl{margin:0}.act dt{font-weight:600;color:var(--navy);margin-top:8px}.act dd{margin:0}
+.quote{background:var(--navy);color:#fff;border-radius:16px;padding:36px;font:italic 600 1.35rem/1.5 var(--head);text-align:center}
+.mini{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+footer{background:var(--navy);color:#cfe0f3;padding:44px 0;margin-top:40px;text-align:center;font-size:.95rem}
+footer b{display:block;color:#fff;font:700 1.25rem var(--head)}footer a{color:#fff;margin:0 8px}
+#top{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:50%;border:0;background:var(--accent);color:#2a1c00;font-size:1.3rem;cursor:pointer;display:none;box-shadow:0 6px 16px #0003}
+#lb{position:fixed;inset:0;background:#000d;z-index:90;display:none;flex-direction:column;align-items:center;justify-content:center;padding:20px;color:#fff}
+#lb.on{display:flex}#lb img{max-width:92vw;max-height:76vh;border-radius:8px}
+#lb button{position:absolute;background:#ffffff25;color:#fff;border:0;border-radius:50%;width:48px;height:48px;font-size:1.5rem;cursor:pointer}
+#lb .x{top:16px;right:16px}#lb .p{left:14px;top:50%}#lb .n{right:14px;top:50%}
+dialog{border:0;border-radius:16px;padding:26px;width:min(560px,94vw)}dialog::backdrop{background:#0008}
+label{display:block;font-weight:600;font-size:.92rem;margin-top:10px}
+input,textarea{width:100%;font:inherit;padding:9px 11px;border:1px solid var(--line);border-radius:8px}
+.note{background:var(--sky);border-radius:10px;padding:10px 14px;font-size:.92rem}
+/* ===== LAPISAN DESAIN V2 ===== */
+body{background:var(--bg) radial-gradient(#0f2a4a14 1px,transparent 1px) 0 0/28px 28px}
+header{border-bottom:3px solid var(--accent);box-shadow:0 6px 20px #0f2a4a40}
+nav>ul>li>a,.dd>button{position:relative}
+.btn{border-radius:999px;padding:13px 28px;box-shadow:0 4px 0 #c47d12}.btn:hover{box-shadow:0 7px 0 #c47d12;transform:translateY(-3px)}
+.btn.alt{box-shadow:0 4px 0 var(--sky)}.btn.alt:hover{box-shadow:0 7px 0 var(--sky)}
+.hero{position:relative;overflow:hidden;padding:88px 0 112px;border-radius:0 0 56px 56px;background:radial-gradient(circle at 88% 15%,#2f72b3 0,transparent 42%),linear-gradient(160deg,var(--navy),#143a66)}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(#ffffff2e 1.5px,transparent 1.5px);background-size:26px 26px;-webkit-mask-image:linear-gradient(90deg,transparent 30%,#000);mask-image:linear-gradient(90deg,transparent 30%,#000)}
+.hero .wrap{position:relative;z-index:1}
+.hero h1{font-size:clamp(2.7rem,6.5vw,4.6rem);letter-spacing:-.01em;margin-bottom:.35em}
+.hero h1::after{content:"";display:block;width:84px;height:6px;border-radius:6px;background:var(--accent);margin-top:18px}
+.hero .wrap>div:first-child>*{animation:rise .7s both}.hero .wrap>div:first-child>:nth-child(2){animation-delay:.12s}.hero .wrap>div:first-child>:nth-child(3){animation-delay:.24s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}}
+.pf{background:none;border:0;padding:0}
+.pf .avatar{width:210px;height:262px;border-radius:105px 105px 22px 22px;border:6px solid #fff;box-shadow:14px 14px 0 var(--accent);margin-bottom:28px}
+.pf b{font-size:1.55rem}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.chips span{background:var(--sky);color:var(--navy);font-weight:600;font-size:.93rem;padding:6px 15px;border-radius:999px}
+.blk h2::after,.card>h2::after{content:"";display:block;width:52px;height:4px;border-radius:4px;background:var(--accent);margin-top:10px}
+.card{border:0;border-radius:20px;box-shadow:0 10px 32px #0f2a4a14}
+.card.ana{border-top:5px solid var(--navy)}
+a.mc{border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 24px #0f2a4a0f;padding:24px}
+a.mc svg{width:54px;height:54px;padding:12px;border-radius:15px;background:var(--sky);transition:background .2s,stroke .2s}
+a.mc:hover{background:var(--navy);border-color:var(--navy)}a.mc:hover b{color:#fff}a.mc:hover small{color:#cfe0f3}a.mc:hover svg{stroke:#fff;background:#ffffff26}
+.tl li{counter-increment:t}
+.tl li::before{content:counter(t);top:0;width:36px;height:36px;margin-left:-18px;display:grid;place-items:center;color:#fff;font:600 .9rem var(--body);background:var(--navy);border:4px solid var(--accent)}
+.tl li::after{top:16px;height:4px;background:linear-gradient(90deg,var(--accent) 50%,var(--sky) 50%)}
+.tl li{padding-top:46px}.tl a{background:var(--white);box-shadow:0 4px 14px #0f2a4a14;padding:6px 14px}.tl a:hover{background:var(--navy);color:#fff}
+@media(max-width:760px){.tl li{padding:0 0 22px 34px}.tl li::before{left:-20px;top:0;margin:0}.tl{margin-left:16px}}
+.banner{background:linear-gradient(135deg,var(--navy),#1b4a7d);color:#fff;border-radius:0 0 40px 40px;margin-bottom:26px;position:relative;overflow:hidden}
+.banner::after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;border:34px solid #ffffff12}
+.banner .pagehead{padding:34px 20px 42px;position:relative;z-index:1}.banner h1{color:#fff;font-size:clamp(1.6rem,4vw,2.5rem);margin:0}.banner h1::after{content:"";display:block;width:52px;height:4px;border-radius:4px;background:var(--accent);margin-top:12px}
+.banner p{color:#cfe0f3;margin:14px 0 0}.banner .ph{color:#9fb7d1}
+.crumb{background:var(--white);padding:12px max(20px,calc((100% - 1040px)/2));max-width:none;margin:0;border-bottom:1px solid var(--line)}
+.quote{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--navy),#1b4a7d);padding:52px 40px 40px}
+.quote::before{content:"“";position:absolute;top:-34px;left:22px;font:700 10rem var(--head);color:var(--accent);opacity:.4}
+footer{border-top:5px solid var(--accent);border-radius:40px 40px 0 0}
+/* ===== AKHIR LAPISAN DESAIN V2 ===== */
+/* ===== LAPISAN DESAIN V3: TEMA CERAH ===== */
+:root{--navy:#1565d8;--deep:#0b3a82;--sky:#E3F2FF;--bg:#F7FBFC;--accent:#FFB020;--text:#23364d;--muted:#5f7790;--line:#d6e6f7;--mint:#3dbb9d}
+body{background:var(--bg) radial-gradient(#1565d826 1px,transparent 1px) 0 0/26px 26px}
+h1,h2,h3{color:var(--deep)}
+#loader{background:linear-gradient(135deg,#1e88e5,#38bdf8)}
+header{background:#ffffffee;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--deep);border-bottom:4px solid var(--accent);box-shadow:0 6px 22px #1565d826}
+.logo{color:var(--deep)}.logo svg{stroke:var(--navy)}
+nav a,nav button{color:var(--deep)}
+nav a:hover,nav button:hover{background:var(--sky);color:var(--navy)}
+nav a[aria-current=page],.dd>button.active{background:var(--navy);color:#fff}
+.dd ul{box-shadow:0 12px 32px #1565d833;border:1px solid var(--line)}
+#burger{color:var(--deep)}
+@media(max-width:900px){nav{background:#fff;border-bottom:1px solid var(--line);box-shadow:0 14px 24px #1565d822}.dd ul a{color:var(--deep)}.dd ul a:hover{background:var(--sky)}}
+.hero{background:radial-gradient(circle at 90% 10%,#7dd3fc 0,transparent 45%),radial-gradient(circle at 5% 100%,#5eead4aa 0,transparent 40%),linear-gradient(135deg,#1e78e6,#2aa4f0)}
+.hero p.sub{color:#fff;opacity:.95}
+.pf span{color:#fff;opacity:.95}
+.pf .avatar{box-shadow:14px 14px 0 var(--accent);background:#fff;color:var(--navy)}
+.btn{color:#3a2500;box-shadow:0 4px 0 #e0900a}.btn:hover{box-shadow:0 7px 0 #e0900a}
+.btn.alt{background:#fff;color:var(--navy);border:2px solid var(--navy);box-shadow:0 4px 0 #bcd9fa}.btn.alt:hover{background:var(--sky);box-shadow:0 7px 0 #bcd9fa}
+.blk.white{background:linear-gradient(180deg,#fff,#EEF7FF)}
+.chips span{background:#fff;border:1.5px solid #bcd9fa;color:var(--navy)}
+.chips span:nth-child(3n+1){background:#E3F2FF}.chips span:nth-child(3n+2){background:#FFF3D6;border-color:#ffd88a;color:#7a4a00}.chips span:nth-child(3n){background:#D9F7F2;border-color:#9be5da;color:#0b6b60}
+.card{box-shadow:0 10px 30px #1565d81a}
+.card.ana{border-top:5px solid var(--navy)}
+a.mc{box-shadow:0 8px 24px #1565d814}
+a.mc:nth-child(3n+2) svg{background:#FFF3D6;stroke:#c47d00}
+a.mc:nth-child(3n) svg{background:#D9F7F2;stroke:#0b8a7c}
+a.mc:hover{background:var(--navy);border-color:var(--navy)}
+a.mc:hover svg{background:#ffffff33;stroke:#fff}
+.tl li::before{background:var(--navy);border-color:var(--accent)}
+.tl a{color:var(--deep)}.tl a:hover{background:var(--navy);color:#fff}
+.banner{background:radial-gradient(circle at 95% 0,#7dd3fc 0,transparent 45%),linear-gradient(135deg,#1e78e6,#2aa4f0)}
+.banner p{color:#fff;opacity:.95}.banner .ph{color:#e3f2ff}
+.crumb{background:#fff}
+.quote{background:linear-gradient(135deg,#1e78e6,#2aa4f0)}
+footer{background:linear-gradient(180deg,#E3F2FF,#cfe8ff);color:var(--deep);border-top:5px solid var(--accent)}
+footer b{color:var(--deep)}footer a{color:var(--navy)}
+#top{box-shadow:0 6px 16px #1565d844}
+.note{background:var(--sky)}
+/* ===== AKHIR LAPISAN DESAIN V3 ===== */
+/* ===== LAPISAN DESAIN V4: TEMA VIBRANT ===== */
+:root{--navy:#3484cf;--deep:#1f3b57;--violet:#3484cf;--cyan:#2fae9f;--pink:#f29b7b;--sun:#f6c453;--mint:#3dbb9d;--sky:#E8F4FA;--bg:#F7FBFC;--line:#dbe9ef;--text:#2b3d4f;--muted:#5f7288;
+--head:"Poppins",system-ui,sans-serif;--body:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+body{background:var(--bg) radial-gradient(#3484cf1f 1.2px,transparent 1.2px) 0 0/26px 26px}
+h1,h2,h3{font-family:var(--head);letter-spacing:-.01em}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}.rv.in{opacity:1;transform:none}
+header{border-bottom:0;background:#ffffffd9;box-shadow:0 8px 30px #3484cf22}
+header::after{content:"";display:block;height:4px;background:linear-gradient(90deg,var(--violet),var(--cyan),var(--mint),var(--sun),var(--pink))}
+.logo{font:800 1.15rem var(--head)}.logo svg{stroke:var(--violet)}
+nav a,nav button{font:700 .8rem var(--body);border-radius:999px}
+nav a:hover,nav button:hover{background:var(--sky);color:var(--violet)}
+nav a[aria-current=page],.dd>button.active{background:linear-gradient(135deg,var(--violet),var(--navy));color:#fff;box-shadow:0 6px 16px #3484cf55}
+.btn{background:linear-gradient(135deg,#f7cf5e,#f4a259);color:#3a1a00;font-weight:700;box-shadow:0 8px 20px #f4a25966}
+.btn:hover{box-shadow:0 12px 26px #f4a25988;transform:translateY(-3px) scale(1.03)}
+.btn.alt{background:#fff;color:var(--violet);border:2px solid var(--violet);box-shadow:0 6px 16px #3484cf22}.btn.alt:hover{background:var(--sky);box-shadow:0 10px 22px #3484cf33}
+.btn.ghost{background:#ffffff26;color:#fff;border:2px solid #ffffffaa;box-shadow:none;backdrop-filter:blur(6px)}.btn.ghost:hover{background:#ffffff40;box-shadow:none}
+/* HERO */
+.hero{border-radius:0;padding:84px 0 130px;background:linear-gradient(135deg,#3484cf 0%,#3b9bd0 48%,#2fae9f 100%)}
+.hero::before{-webkit-mask-image:none;mask-image:none;opacity:.55}
+.hero .blob{position:absolute;border-radius:50%;filter:blur(2px);animation:flt 9s ease-in-out infinite}
+.blob.b1{width:340px;height:340px;right:-80px;top:-90px;background:radial-gradient(circle,#f29b7b99,transparent 68%)}
+.blob.b2{width:300px;height:300px;left:-90px;bottom:-60px;background:radial-gradient(circle,#3dbb9d88,transparent 68%);animation-delay:-3s}
+.blob.b3{width:200px;height:200px;left:42%;top:12%;background:radial-gradient(circle,#f6c45377,transparent 68%);animation-delay:-6s}
+@keyframes flt{50%{transform:translate(18px,-22px) scale(1.08)}}
+.eyebrow{display:inline-block;background:#ffffff2e;border:1px solid #ffffff66;backdrop-filter:blur(6px);color:#fff;font-weight:700;font-size:.88rem;padding:7px 16px;border-radius:999px;margin-bottom:18px}
+.hero h1{font:800 clamp(2.6rem,6.5vw,4.8rem)/1.05 var(--head);color:#fff;margin-bottom:.3em}
+.hero h1::after{background:linear-gradient(90deg,var(--sun),var(--pink));width:96px}
+.grad{background:linear-gradient(90deg,#ffe27a,#ffb3d1);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{font-size:1.18rem;max-width:30em}
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+.pf{position:relative;padding:10px 0 0}
+.pf .ring{position:absolute;top:-14px;left:50%;width:300px;height:300px;margin-left:-150px;border-radius:50%;border:3px dashed #ffffff88;animation:spin 28s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pf .avatar{position:relative;width:230px;height:230px;border-radius:62% 38% 55% 45%/50% 55% 45% 50%;border:8px solid #fff;box-shadow:0 24px 50px #1f3b5755;animation:morph 9s ease-in-out infinite;margin-bottom:22px}
+@keyframes morph{50%{border-radius:42% 58% 40% 60%/58% 42% 58% 42%}}
+.pf b{font-size:1.5rem}
+.fb{position:absolute;background:#fff;color:var(--deep)!important;font-weight:700;font-size:.82rem!important;padding:8px 14px;border-radius:999px;box-shadow:0 10px 24px #1f3b5733;animation:flt 6s ease-in-out infinite;white-space:nowrap}
+.fb.f1{left:-6px;top:30px}.fb.f2{right:-10px;top:110px;animation-delay:-2s}.fb.f3{left:6px;top:200px;animation-delay:-4s}
+.wave{position:absolute;left:0;bottom:-1px;width:100%;height:70px;display:block}
+@media(max-width:760px){.fb.f1{left:0}.fb.f2{right:0}.pf .ring{width:260px;height:260px;margin-left:-130px}}
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px;margin-top:-62px;position:relative;z-index:3}
+.stat{background:#fff;border-radius:22px;padding:22px 20px;text-align:center;box-shadow:0 14px 34px #3484cf24;border-bottom:5px solid var(--violet)}
+.stat:nth-child(2){border-color:var(--cyan)}.stat:nth-child(3){border-color:var(--sun)}.stat:nth-child(4){border-color:var(--pink)}
+.stat b{display:block;font:800 2.6rem/1.1 var(--head);background:linear-gradient(135deg,var(--violet),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat:nth-child(3) b{background:linear-gradient(135deg,var(--sun),var(--pink));-webkit-background-clip:text;background-clip:text}
+.stat:nth-child(4) b{background:linear-gradient(135deg,var(--pink),var(--violet));-webkit-background-clip:text;background-clip:text}
+.stat span{color:var(--muted);font-weight:600;font-size:.92rem}
+/* SECTIONS */
+.blk h2::after,.card>h2::after{background:linear-gradient(90deg,var(--sun),var(--pink));width:60px;height:5px}
+.blk.white{background:none}
+.chips span{border-radius:999px;font-weight:700;border:0;box-shadow:0 4px 10px #3484cf14}
+.chips span:nth-child(4n+1){background:#E1F0FB;color:#1f5f99}.chips span:nth-child(4n+2){background:#D9F3FF;color:#0a6f94}.chips span:nth-child(4n+3){background:#FFE9C7;color:#8a4b00}.chips span:nth-child(4n){background:#FDE6DC;color:#a14a2a}
+.exg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;margin-top:8px}
+a.ex{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:6px;text-decoration:none;color:#fff;border-radius:26px;padding:28px 24px 30px;min-height:190px;box-shadow:0 16px 34px #1f3b572e;transition:transform .25s,box-shadow .25s}
+a.ex::after{content:"→";position:absolute;right:20px;bottom:16px;width:40px;height:40px;border-radius:50%;background:#ffffff33;display:grid;place-items:center;font-size:1.2rem;transition:transform .25s,background .25s}
+a.ex::before{content:"";position:absolute;right:-40px;top:-40px;width:150px;height:150px;border-radius:50%;background:#ffffff22}
+a.ex:hover{transform:translateY(-8px) rotate(-1deg);box-shadow:0 24px 44px #1f3b5744}a.ex:hover::after{transform:translateX(5px);background:#ffffff55}
+a.ex i{font-style:normal;font-size:2.4rem;line-height:1;margin-bottom:10px}
+a.ex b{font:700 1.2rem var(--head);color:#fff;display:block}a.ex small{color:#ffffffdd;font-size:.92rem;max-width:80%}
+a.ex.c1{background:linear-gradient(135deg,#3484cf,#5aa3e0)}a.ex.c2{background:linear-gradient(135deg,#4aa3df,#2fae9f)}a.ex.c3{background:linear-gradient(135deg,#f4a259,#f6c453)}a.ex.c4{background:linear-gradient(135deg,#f29b7b,#f7b79c)}
+.card{border-radius:24px;box-shadow:0 12px 34px #3484cf1c;border:1px solid #e8eefc}
+.card.ana{border-top:0;position:relative;overflow:hidden}.card.ana::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:linear-gradient(90deg,var(--violet),var(--cyan),var(--mint))}
+.ana h3{border-left:4px solid var(--pink)}
+a.mc{border:0;border-radius:22px;box-shadow:0 10px 28px #3484cf1f;background:#fff;position:relative;overflow:hidden}
+a.mc::after{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(var(--violet),var(--cyan))}
+a.mc svg,a.mc:nth-child(3n+2) svg,a.mc:nth-child(3n) svg{width:56px;height:56px;padding:13px;border-radius:18px;stroke:#fff;background:linear-gradient(135deg,var(--violet),var(--cyan))}
+a.mc:nth-child(3n+2) svg{background:linear-gradient(135deg,#f4a259,var(--sun))}a.mc:nth-child(3n) svg{background:linear-gradient(135deg,var(--pink),var(--violet))}
+a.mc:hover{background:linear-gradient(135deg,var(--violet),var(--navy));transform:translateY(-6px);box-shadow:0 18px 36px #3484cf44}
+a.mc:hover svg{background:#ffffff33!important}
+/* TIMELINE */
+.tl li::before{background:linear-gradient(135deg,var(--violet),var(--cyan));border:4px solid #fff;box-shadow:0 6px 14px #3484cf55}
+.tl li::after{background:linear-gradient(90deg,var(--violet),var(--cyan))}
+.tl a{border-radius:999px;color:var(--deep);box-shadow:0 6px 16px #3484cf1f}.tl a:hover{background:linear-gradient(135deg,var(--violet),var(--navy));color:#fff}
+/* SUBPAGE */
+.banner{border-radius:0 0 48px 48px;background:radial-gradient(circle at 92% 0,#f29b7b88 0,transparent 40%),linear-gradient(135deg,#3484cf,#3b9bd0 55%,#2fae9f)}
+.banner h1{font-family:var(--head);font-weight:800}.banner h1::after{background:linear-gradient(90deg,var(--sun),var(--pink))}
+.crumb{border-bottom:0;box-shadow:0 4px 14px #3484cf14}
+.quote{border-radius:26px;font-family:var(--head);font-style:normal;font-weight:600;background:linear-gradient(135deg,#3484cf,#3b9bd0 55%,#2fae9f);box-shadow:0 18px 40px #3484cf44}
+.quote::before{color:#fff;opacity:.25}
+.empty{background:#F5F8FF;border-color:#c9d7fb}
+/* FOOTER */
+footer{background:linear-gradient(135deg,#3484cf,#3b9bd0 55%,#2fae9f);color:#fff;border-top:0;border-radius:48px 48px 0 0;margin-top:60px}
+footer b{color:#fff;font-family:var(--head)}footer a{color:#fff;font-weight:700}
+#top{background:linear-gradient(135deg,#f7cf5e,#f4a259);box-shadow:0 8px 20px #f4a25977}
+#loader{background:linear-gradient(135deg,#3484cf,#2fae9f)}
+@media(max-width:900px){nav{border-radius:0 0 22px 22px}}
+/* ===== AKHIR LAPISAN DESAIN V4 ===== */
+/* ===== REVISI: FOTO PROFIL ===== */
+.avatar{object-fit:cover;object-position:center 20%}
+.avatar.lg{border-radius:62% 38% 55% 45%/50% 55% 45% 50%;border:6px solid #fff;box-shadow:0 16px 36px #1f3b5744;width:220px;height:220px}
+/* ===== AKHIR REVISI ===== */
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div id="loader" aria-hidden="true"><i></i></div>
+<header>
+ <div class="wrap bar">
+  <a class="logo" href="#/" aria-label="Beranda"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F2A33A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>E-Portofolio PPG</a>
+  <button id="burger" aria-label="Buka menu" aria-expanded="false">☰</button>
+  <nav id="nav" aria-label="Menu utama"><ul>
+   <li><a href="#/">BERANDA</a></li>
+   <li><a href="#/profil">PROFIL</a></li>
+   <li><a href="#/terbimbing">PRAKTIK TERBIMBING</a></li>
+   <li class="dd"><button aria-haspopup="true">PRAKTIK MANDIRI ▾</button><ul>
+    <li><a href="#/mandiri/siklus-1">Siklus 1</a></li><li><a href="#/mandiri/siklus-2">Siklus 2</a></li>
+    <li><a href="#/mandiri/siklus-3">Siklus 3</a></li><li><a href="#/mandiri/siklus-4">Siklus 4</a></li></ul></li>
+   <li><a href="#/nonmengajar">KEGIATAN NON MENGAJAR</a></li>
+   <li><a href="#/refleksi">REFLEKSI DIRI</a></li>
+  </ul></nav>
+ </div>
+</header>
+<main id="app" tabindex="-1"></main>
+<footer><div class="wrap" id="foot"></div></footer>
+<button id="top" aria-label="Kembali ke atas">↑</button>
+<div id="lb" role="dialog" aria-label="Foto" aria-modal="true"><button class="x" aria-label="Tutup">×</button><button class="p" aria-label="Foto sebelumnya">‹</button><img alt=""><p id="cap"></p><button class="n" aria-label="Foto berikutnya">›</button></div>
+<dialog id="dlg"></dialog>
+
+<script>
+/* =====================================================================
+   CONFIG — INI SATU-SATUNYA BAGIAN YANG PERLU ANDA EDIT
+   - Ganti semua teks berformat [SEPERTI INI] dengan data Anda.
+   - Link PDF/foto: tempel link share Google Drive biasa
+     (https://drive.google.com/file/d/ID/view). File harus diatur
+     "Siapa saja yang memiliki link" di Google Drive.
+   - Link video: tempel link YouTube biasa (watch / youtu.be / shorts).
+   - Selama masih berisi [ ... ], bagian itu tampil sebagai "belum ditambahkan".
+   ===================================================================== */
+const C = {
+  "nama": "MUHYIDIN",
+  "nim": "2025301919",
+  "prodi": "PENDIDIKAN GURU SEKOLAH DASAR",
+  "lptk": "UNIVERSITAS MURIA KUDUS",
+  "sekolah": "SD 7 GONDOSARI",
+  "tahun": "2026",
+  "periode": "2026",
+  "foto": "https://res.cloudinary.com/g2djigeg/image/upload/f_auto,q_auto/WhatsApp_Image_2026-10-11_at_04.17.53",
+  "profilSingkat": "Saya merupakan peserta Pendidikan Profesi Guru (PPG) yang memiliki ketertarikan dalam mengembangkan pembelajaran yang aktif, kontekstual, dan sesuai dengan kebutuhan peserta didik. Dalam melaksanakan praktik pembelajaran, saya berupaya mengintegrasikan berbagai media dan teknologi seperti PowerPoint, Canva, LKPD, serta media interaktif untuk membantu siswa memahami materi dengan lebih mudah. Saya juga berusaha menciptakan suasana belajar yang mendorong siswa untuk berpikir kritis, bekerja sama, dan percaya diri dalam menyelesaikan permasalahan. Melalui pengalaman PPG dan praktik mengajar, saya terus melakukan refleksi dan perbaikan untuk meningkatkan kompetensi sebagai calon guru yang profesional.",
+  "sosial": [
+    {
+      "nama": "Email",
+      "url": "mailto:peserta.33472@ppg.belajar.id"
+    },
+    {
+      "nama": "WhatsApp",
+      "url": "https://wa.me/6285728625278"
+    },
+    {
+      "nama": "YouTube",
+      "url": "https://www.youtube.com/@MUHYIDIN-d1z"
+    },
+    {
+      "nama": "Instagram",
+      "url": "https://www.instagram.com/muhyidnsp?psln=MW9hc2tlc2Jxd3"
+    }
+  ],
+  "deskTerbimbing": "Pada Praktik Pembelajaran Terbimbing, saya melaksanakan kegiatan pembelajaran di kelas III SD 7 Gondosari pada mata pelajaran Matematika dengan materi operasi hitung bilangan 1–100. Kegiatan pembelajaran dilaksanakan dalam 3 kali pertemuan dengan tujuan membantu peserta didik memahami dan menerapkan operasi hitung melalui kegiatan pembelajaran yang kontekstual dan sesuai dengan karakteristik siswa.",
+  "deskNonMengajar": "",
+  "deskSiklus": {
+    "1": "Pada Siklus 1, saya melaksanakan pembelajaran di kelas III SD 7 Gondosari pada mata pelajaran Matematika dengan materi operasi hitung bilangan 1–100 dalam bentuk soal cerita. Pembelajaran dilaksanakan dalam 3 kali pertemuan, dengan penekanan pada kemampuan peserta didik dalam memahami informasi pada soal cerita, menentukan operasi hitung yang tepat, serta menyelesaikan permasalahan dalam konteks kehidupan sehari-hari.",
+    "2": "Pada Siklus 2, saya melaksanakan pembelajaran di kelas IV SD 7 Gondosari pada mata pelajaran Bahasa Indonesia dengan materi kalimat majemuk dan rambu-rambu lalu lintas. Pembelajaran dilaksanakan dalam 3 kali pertemuan dengan mengaitkan materi Bahasa Indonesia dengan situasi yang dekat dengan kehidupan peserta didik, khususnya dalam memahami dan menggunakan kalimat serta mengenali informasi yang terdapat pada rambu-rambu lalu lintas.",
+    "3": "Pada Siklus 3, saya melaksanakan pembelajaran di kelas V pada mata pelajaran Bahasa Jawa dengan materi dolanan tradisional dan cerita rakyat. Kegiatan pembelajaran dilaksanakan dalam 3 kali pertemuan, dengan mengajak peserta didik mengenal budaya Jawa melalui permainan tradisional serta memahami unsur dan nilai yang terdapat dalam cerita rakyat.",
+    "4": "Pada Siklus 4, saya melaksanakan pembelajaran di kelas VI pada mata pelajaran Seni Budaya dengan materi seni makrame dan seni anyaman. Pembelajaran dilaksanakan dalam 2 kali pertemuan dengan memberikan pengalaman kepada peserta didik untuk mengenal serta mempraktikkan karya seni berbasis keterampilan tangan melalui kegiatan yang kreatif dan aplikatif."
+  },
+  "refleksi": {
+    "Pengalaman yang Saya Peroleh": "Selama melaksanakan praktik pembelajaran terbimbing dan Siklus 1–4, saya memperoleh pengalaman mengajar pada berbagai jenjang kelas dan mata pelajaran, mulai dari kelas III Matematika, kelas IV Bahasa Indonesia, kelas V Bahasa Jawa, hingga kelas VI Seni Budaya. Pengalaman tersebut memberikan kesempatan bagi saya untuk memahami bahwa setiap peserta didik memiliki karakteristik, kemampuan, dan kebutuhan belajar yang berbeda. Saya juga belajar untuk menyesuaikan materi, metode, media, serta kegiatan pembelajaran dengan kondisi peserta didik.",
+    "Hal yang Sudah Berjalan dengan Baik": "Hal yang sudah berjalan dengan baik adalah saya mampu melaksanakan pembelajaran sesuai dengan rancangan yang telah disiapkan. Saya dapat menggunakan berbagai media pembelajaran dan kegiatan yang melibatkan peserta didik secara aktif, baik melalui diskusi, pengerjaan LKPD, praktik, maupun kegiatan pemecahan masalah. Saya juga mulai mampu membangun interaksi yang positif dengan peserta didik sehingga suasana pembelajaran menjadi lebih aktif dan menyenangkan.",
+    "Tantangan yang Saya Hadapi": "Tantangan yang saya hadapi adalah menyesuaikan pembelajaran dengan perbedaan kemampuan dan karakteristik peserta didik. Pada pembelajaran Matematika, misalnya, terdapat peserta didik yang masih mengalami kesulitan dalam memahami operasi hitung dan soal cerita. Selain itu, saya perlu mengatur waktu, mengelola kelas, serta memastikan seluruh peserta didik dapat mengikuti kegiatan pembelajaran dengan baik.",
+    "Pembelajaran yang Saya Dapatkan": "Saya mendapatkan pembelajaran bahwa menjadi guru tidak hanya berkaitan dengan menyampaikan materi, tetapi juga memahami kebutuhan peserta didik dan menciptakan pengalaman belajar yang bermakna. Saya belajar bahwa penggunaan media dan teknologi harus memiliki tujuan pedagogis yang jelas, bukan hanya untuk membuat pembelajaran terlihat menarik. Saya juga memahami pentingnya memberikan kesempatan kepada peserta didik untuk berpikir, berdiskusi, mencoba, melakukan kesalahan, dan memperbaiki pemahamannya.",
+    "Perubahan yang Saya Rasakan": "Saya merasakan perubahan dalam cara saya merancang dan melaksanakan pembelajaran. Saya menjadi lebih percaya diri dalam mengelola kelas, memilih metode dan media pembelajaran, serta berinteraksi dengan peserta didik. Saya juga menjadi lebih terbiasa melakukan refleksi setelah pembelajaran untuk mengetahui bagian yang sudah efektif dan bagian yang masih perlu diperbaiki.",
+    "Hal yang Perlu Saya Tingkatkan": "Hal yang masih perlu saya tingkatkan adalah kemampuan dalam mengelola waktu pembelajaran, memberikan instruksi yang lebih sederhana dan mudah dipahami, serta melakukan diferensiasi sesuai dengan kemampuan peserta didik. Saya juga perlu meningkatkan kemampuan dalam mengembangkan asesmen yang tidak hanya mengukur hasil akhir, tetapi juga proses belajar peserta didik.",
+    "Rencana Tindak Lanjut": "Sebagai tindak lanjut, saya akan terus melakukan refleksi terhadap setiap kegiatan pembelajaran dan menggunakan hasil refleksi tersebut sebagai dasar untuk melakukan perbaikan. Saya akan lebih memperhatikan karakteristik dan kebutuhan peserta didik sebelum menentukan metode, media, dan bentuk asesmen. Saya juga akan terus mengembangkan kemampuan dalam memanfaatkan teknologi dan media pembelajaran secara tepat agar benar-benar mendukung pencapaian tujuan pembelajaran.",
+    "Komitmen Saya sebagai Guru": "Saya berkomitmen untuk terus belajar, berkembang, dan melakukan perbaikan dalam setiap proses pembelajaran. Saya ingin menjadi guru yang tidak hanya mampu menyampaikan pengetahuan, tetapi juga mampu membimbing, memahami, dan memberikan pengalaman belajar yang bermakna bagi peserta didik. Saya akan berusaha menciptakan pembelajaran yang aktif, kontekstual, inklusif, dan sesuai dengan kebutuhan peserta didik. Bagi saya, menjadi guru adalah sebuah proses belajar sepanjang hayat, sehingga saya siap menerima masukan, melakukan refleksi, dan terus meningkatkan kompetensi untuk memberikan pembelajaran yang lebih baik."
+  },
+  "konten": {
+    "terbimbing/perangkat-ajar": {
+      "analisis": "Perangkat ajar yang digunakan dalam Praktik Pembelajaran Terbimbing disusun untuk pembelajaran Matematika kelas III di SD 7 Gondosari dengan materi operasi hitung bilangan 1–100 dan soal cerita. Pembelajaran dirancang dalam tiga kali pertemuan dengan tahapan yang sistematis, mulai dari memahami operasi penjumlahan dan pengurangan, memahami informasi dalam soal cerita, hingga menyelesaikan soal cerita secara kontekstual. Perangkat ajar menggunakan model Problem-Based Learning (PBL) yang didukung dengan benda konkret, kartu angka, garis bilangan, LKPD, serta slide presentasi/video. Perangkat juga memperhatikan perbedaan kemampuan peserta didik melalui asesmen awal dan pengelompokan secara fleksibel. Asesmen dilakukan secara bertahap melalui asesmen diagnostik, formatif, asesmen akhir, dan refleksi peserta didik. Secara keseluruhan, perangkat ajar sudah dirancang untuk mendorong peserta didik berpikir kritis, bekerja sama, mandiri, serta menghubungkan pembelajaran Matematika dengan kehidupan sehari-hari.",
+      "pdf": "https://drive.google.com/file/d/1R7HlpumgsgK1YCEAhQyh8W5QIwJLOUDd/view?usp=sharing"
+    },
+    "terbimbing/materi": {
+      "analisis": "Materi pembelajaran yang digunakan adalah operasi hitung bilangan 1–100 dan soal cerita, yang meliputi penjumlahan dan pengurangan bilangan 1–100 serta penerapannya dalam permasalahan sehari-hari. Materi disusun secara bertahap, dimulai dari pemahaman konsep melalui media konkret, kemudian peserta didik belajar mengidentifikasi informasi yang diketahui dan ditanyakan dalam soal cerita, hingga menerapkan operasi hitung untuk menyelesaikan masalah kontekstual. Materi juga dikaitkan dengan pengalaman sehari-hari peserta didik, seperti menghitung jumlah benda, mengelola uang saku, kegiatan jual beli, dan menghitung sisa barang. Penyajian materi tidak hanya menekankan pada hasil perhitungan, tetapi juga pada proses berpikir, alasan pemilihan operasi hitung, dan kemampuan peserta didik mengecek kembali jawabannya. Hal ini membantu peserta didik memahami bahwa operasi hitung merupakan keterampilan yang dapat digunakan untuk menyelesaikan berbagai masalah dalam kehidupan sehari-hari.",
+      "pdf": "https://drive.google.com/file/d/1wVFkME4fUZDR1pOfLXYedD99P7Oqol2Q/view?usp=sharing"
+    },
+    "terbimbing/media": {
+      "youtube": "https://youtu.be/aPDAbkOKxdo?si=Pft6Kcjstx1kVgr8",
+      "analisis": "Media pembelajaran yang digunakan dalam praktik terbimbing terdiri atas benda konkret seperti stik es krim atau papan blok, kartu angka, garis bilangan, LKPD, papan tulis, proyektor/LCD, serta slide presentasi dan video animasi kontekstual. Pemilihan media tersebut disesuaikan dengan karakteristik peserta didik kelas III yang masih membutuhkan pengalaman belajar konkret untuk membantu memahami konsep operasi hitung. Media konkret digunakan untuk membantu peserta didik memahami nilai tempat, penjumlahan, dan pengurangan, sedangkan kartu angka dan garis bilangan membantu peserta didik melakukan proses perhitungan secara lebih visual. Slide dan video digunakan sebagai pemicu masalah yang berkaitan dengan situasi sehari-hari, seperti kegiatan belanja di warung sekolah. Penggunaan media juga mendukung pembelajaran yang aktif karena peserta didik tidak hanya melihat atau mendengarkan penjelasan guru, tetapi menggunakan media dalam kegiatan penyelidikan dan penyelesaian masalah."
+    },
+    "terbimbing/video": {
+      "youtube": "https://youtu.be/X4GSdpgpgBo",
+      "identitas": {
+        "Materi": "Operasi Hitung Bilangan 1–100 dan Soal Cerita",
+        "Kelas": "III (Tiga)",
+        "Waktu pelaksanaan": "20260728-2026084",
+        "Durasi": "60 menit",
+        "Model/metode pembelajaran": "Problem-Based Learning (PBL), demonstrasi, diskusi kelompok/berpasangan, tanya jawab, permainan matematika, dan penugasan individual/kelompok."
+      },
+      "analisis": "Pelaksanaan pembelajaran dalam video menunjukkan penerapan pembelajaran Matematika yang berorientasi pada pemecahan masalah dan keterlibatan aktif peserta didik. Pembelajaran diawali dengan salam, pengecekan kesiapan, apersepsi, pertanyaan pemantik, dan penyampaian tujuan pembelajaran. Pada kegiatan inti, guru mengarahkan peserta didik untuk memahami permasalahan, menggunakan media konkret, berdiskusi, mengerjakan LKPD, serta menyampaikan hasil penyelesaian di depan kelas. Interaksi guru dan peserta didik berlangsung melalui tanya jawab, pemberian arahan, pendampingan, dan umpan balik. Peserta didik diberikan kesempatan untuk bekerja secara individu, berpasangan, maupun berkelompok sehingga pembelajaran tidak hanya berpusat pada guru. Pada akhir pembelajaran dilakukan pengecekan kembali terhadap hasil pekerjaan, refleksi, pemberian umpan balik, dan tindak lanjut. Rangkaian tersebut sesuai dengan rancangan pembelajaran yang menggunakan sintaks PBL mulai dari orientasi masalah, pengorganisasian peserta didik, penyelidikan, penyajian hasil, hingga evaluasi proses pemecahan masalah."
+    },
+    "terbimbing/instrumen": {
+      "analisis": "Instrumen penilaian yang saya gunakan berupa LKPD (Lembar Kerja Peserta Didik) untuk mengukur kemampuan peserta didik dalam menyelesaikan operasi hitung bilangan 1–100, yang meliputi penjumlahan, pengurangan, perkalian, dan pembagian. LKPD memberikan kesempatan kepada peserta didik untuk mengerjakan soal secara bertahap sehingga saya dapat mengetahui tingkat pemahaman dan kemampuan mereka dalam menyelesaikan setiap jenis operasi hitung. Penilaian tidak hanya berfokus pada jawaban akhir, tetapi juga memperhatikan proses dan cara pengerjaan peserta didik. Hasil pengerjaan LKPD kemudian dapat digunakan untuk mengetahui peserta didik yang sudah menguasai materi maupun yang masih memerlukan bimbingan, sehingga dapat menjadi dasar untuk memberikan tindak lanjut berupa remedial maupun pengayaan.",
+      "pdfs": [
+        "https://drive.google.com/file/d/1k52RQ9lcfUg8O-HZyiExdUYRoaZxELtQ/view?usp=sharing",
+        "https://drive.google.com/file/d/1xrGZ4ZN3W3ZjVAWJmUVTRnwT4ktlY14B/view?usp=sharing",
+        "https://drive.google.com/file/d/1ZYgq3-qgEGwsMz0FU1uPCxGU7hw38b9T/view?usp=sharing"
+      ]
+    },
+    "mandiri/siklus-1/modul": {
+      "analisis": "Modul ajar pada Siklus 1 digunakan untuk pembelajaran Matematika kelas III SD 7 Gondosari dengan materi operasi hitung bilangan 1–100 dalam bentuk soal cerita. Modul dirancang dalam tiga kali pertemuan dengan kegiatan yang bertahap, mulai dari memahami informasi dalam soal cerita, menentukan operasi hitung yang sesuai, hingga menyelesaikan permasalahan kontekstual secara runtut. Pembelajaran tetap menggunakan pendekatan yang berpusat pada peserta didik melalui kegiatan membaca soal, diskusi, tanya jawab, pengerjaan LKPD, presentasi, dan refleksi. Materi soal cerita dikaitkan dengan situasi kehidupan sehari-hari sehingga peserta didik dapat memahami penggunaan operasi hitung secara lebih bermakna. Modul juga memberikan kesempatan kepada guru untuk memberikan bimbingan kepada peserta didik yang mengalami kesulitan serta memberikan pengayaan bagi peserta didik yang sudah memahami materi.",
+      "pdf": "https://drive.google.com/file/d/1R7HlpumgsgK1YCEAhQyh8W5QIwJLOUDd/view?usp=sharing"
+    },
+    "mandiri/siklus-1/media": {
+      "analisis": "Media pembelajaran pada Siklus 1 digunakan untuk membantu peserta didik memahami operasi hitung bilangan 1–100 melalui soal cerita. Media yang digunakan meliputi LKPD, kartu angka, garis bilangan, benda konkret, papan tulis, serta slide atau media visual yang menampilkan permasalahan dalam kehidupan sehari-hari. Media tersebut membantu peserta didik memahami hubungan antara cerita dengan operasi hitung yang harus digunakan, sehingga mereka tidak hanya mencari kata kunci, tetapi memahami informasi yang diketahui dan ditanyakan dalam soal. Penggunaan media juga membuat peserta didik lebih aktif dalam membaca, berdiskusi, menghitung, dan menjelaskan cara penyelesaian masalah. Dengan demikian, media pembelajaran berfungsi sebagai pendukung untuk mempermudah pemahaman konsep sekaligus meningkatkan keterlibatan peserta didik selama proses pembelajaran.",
+      "pdf": "https://drive.google.com/file/d/1wVFkME4fUZDR1pOfLXYedD99P7Oqol2Q/view?usp=sharing"
+    },
+    "mandiri/siklus-1/video": {
+      "youtube": "https://youtu.be/p4ts2ETtZdU",
+      "identitas": {
+        "Materi": "Operasi Hitung Bilangan 1–100 dalam Bentuk Soal Cerita",
+        "Kelas": "III (Tiga)",
+        "Waktu pelaksanaan": "11 Agustus 2026",
+        "Durasi": "30 menit",
+        "Model/metode pembelajaran": "Problem-Based Learning (PBL), diskusi, tanya jawab, demonstrasi, penugasan, dan pemecahan masalah."
+      },
+      "analisis": "Video pembelajaran pada Siklus 1 menunjukkan pelaksanaan pembelajaran Matematika kelas III dengan fokus pada kemampuan peserta didik dalam memahami dan menyelesaikan soal cerita operasi hitung bilangan 1–100. Pembelajaran diawali dengan apersepsi, penyampaian tujuan, dan pertanyaan pemantik yang berkaitan dengan kehidupan sehari-hari. Pada kegiatan inti, peserta didik diarahkan untuk membaca dan memahami soal, menentukan informasi yang diketahui dan ditanyakan, memilih operasi hitung yang sesuai, kemudian menyelesaikan perhitungan secara runtut. Guru memberikan pendampingan dan umpan balik kepada peserta didik selama proses pengerjaan, sementara peserta didik terlibat melalui kegiatan diskusi, pengerjaan LKPD, dan penyampaian hasil pekerjaan. Pada akhir pembelajaran dilakukan pemeriksaan hasil, refleksi, dan pemberian tindak lanjut. Secara keseluruhan, pelaksanaan pembelajaran menunjukkan upaya untuk membuat peserta didik tidak hanya mendapatkan jawaban, tetapi juga memahami proses dan alasan dalam menentukan penyelesaian soal cerita."
+    },
+    "mandiri/siklus-1/instrumen": {
+      "analisis": "Instrumen penilaian pada Siklus 1 menggunakan LKPD berbentuk soal cerita yang berkaitan dengan materi operasi hitung bilangan 1–100. LKPD digunakan untuk mengetahui kemampuan peserta didik dalam memahami informasi pada soal cerita, menentukan operasi hitung yang sesuai, serta menyelesaikan permasalahan dengan langkah pengerjaan yang tepat. Melalui instrumen ini, penilaian tidak hanya berfokus pada jawaban akhir, tetapi juga pada proses berpikir dan cara peserta didik dalam menyelesaikan soal. Penggunaan soal cerita juga membantu menghubungkan materi operasi hitung dengan situasi yang dekat dengan kehidupan sehari-hari peserta didik.",
+      "pdfs": [
+        "https://drive.google.com/file/d/1zNCnL2Nq93Ie7hILo8zlFz_S2E9XIieh/view?usp=drive_link",
+        "https://drive.google.com/file/d/1xqF3PcYo0Cjos5qIrE28bwCjAzvWVOPV/view?usp=sharing",
+        "https://drive.google.com/file/d/1RvyaWVtdKnNyPnogO-E5AsKvOy3MO1uB/view?usp=sharing"
+      ]
+    },
+    "mandiri/siklus-2/modul": {
+      "analisis": "Modul ajar Siklus 2 dirancang untuk pembelajaran Bahasa Indonesia kelas IV dengan materi kalimat majemuk dan rambu-rambu lalu lintas. Pembelajaran dilaksanakan dalam 3 pertemuan dengan tujuan agar peserta didik mampu memahami dan membedakan kalimat tunggal dan kalimat majemuk, mengenali jenis serta makna rambu lalu lintas, dan mengintegrasikan keduanya dalam situasi yang kontekstual. Modul menggunakan model Problem Based Learning (PBL) yang dikombinasikan dengan Cooperative Learning, sehingga peserta didik terlibat dalam kegiatan mengamati, berdiskusi, memecahkan masalah, menyusun kalimat, dan mempresentasikan hasilnya. Perencanaan pembelajaran juga dilengkapi dengan asesmen diagnostik, formatif, dan sumatif serta kegiatan remedial dan pengayaan untuk menyesuaikan dengan kemampuan peserta didik.",
+      "pdf": "https://drive.google.com/file/d/1KkryJrfGjAOjxUPeI_MF77yhocC1RMXn/view?usp=sharing"
+    },
+    "mandiri/siklus-2/media": {
+      "analisis": "Media pembelajaran yang digunakan pada Siklus 2 disesuaikan dengan karakteristik materi dan kebutuhan peserta didik kelas IV. Media yang digunakan meliputi kartu kalimat dan kartu kata hubung, gambar atau media cetak rambu lalu lintas, papan tempel, LKPD, serta proyektor/LCD untuk menampilkan slide dan video. Penggunaan media visual membantu peserta didik memahami struktur kalimat sekaligus mengenali jenis dan makna rambu lalu lintas secara lebih konkret. Kartu kalimat digunakan untuk membantu peserta didik menggabungkan kalimat tunggal menjadi kalimat majemuk, sedangkan gambar rambu digunakan sebagai stimulus untuk menganalisis situasi dan menyusun kalimat berdasarkan konteks keselamatan berlalu lintas. Dengan demikian, media tidak hanya berfungsi sebagai alat bantu penyampaian materi, tetapi juga mendukung aktivitas diskusi, permainan, pemecahan masalah, dan presentasi peserta didik.",
+      "pdf": "https://drive.google.com/file/d/1hgeBPG0Afr68QAoyksPUILVYyPeIsriO/view?usp=sharing"
+    },
+    "mandiri/siklus-2/video": {
+      "youtube": "https://youtu.be/yqXYEpVPHCI",
+      "identitas": {
+        "Materi": "Kalimat Majemuk dan Rambu-Rambu Lalu Lintas",
+        "Kelas": "IV SD",
+        "Waktu pelaksanaan": "1 September 2026",
+        "Durasi": "20 menit",
+        "Model/metode pembelajaran": "Problem Based Learning (PBL), Cooperative Learning, tanya jawab, diskusi kelompok, demonstrasi media visual, permainan kartu kata, penugasan kontekstual, dan presentasi."
+      },
+      "analisis": "Video pembelajaran Siklus 2 menampilkan proses pembelajaran Bahasa Indonesia kelas IV dengan materi kalimat majemuk dan rambu-rambu lalu lintas. Pembelajaran diawali dengan apersepsi dan penyampaian tujuan, kemudian peserta didik diarahkan untuk mengamati permasalahan melalui contoh kalimat dan gambar rambu lalu lintas. Pada kegiatan inti, peserta didik bekerja secara berkelompok menggunakan kartu kalimat, kartu kata hubung, gambar rambu, dan LKPD untuk mengidentifikasi, menggabungkan, serta menyusun kalimat majemuk berdasarkan situasi yang diberikan. Peserta didik juga mempresentasikan hasil kerja dan mendapatkan tanggapan serta umpan balik dari guru. Pada pertemuan terakhir, peserta didik mengintegrasikan pemahaman kalimat majemuk dengan situasi rambu lalu lintas melalui penyusunan kalimat kontekstual dan asesmen akhir. Rangkaian kegiatan tersebut menunjukkan penerapan pembelajaran yang aktif, kolaboratif, kontekstual, dan berorientasi pada pemecahan masalah."
+    },
+    "mandiri/siklus-2/instrumen": {
+      "analisis": "Instrumen penilaian pada Siklus 2 digunakan untuk mengetahui pemahaman dan keterampilan peserta didik dalam mempelajari materi kalimat majemuk dan rambu-rambu lalu lintas. Penilaian disesuaikan dengan kegiatan pembelajaran pada setiap pertemuan, mulai dari kemampuan memahami dan membedakan kalimat tunggal dan kalimat majemuk, mengidentifikasi penggunaan kata hubung, hingga memahami jenis dan makna rambu lalu lintas serta menggunakannya dalam kalimat. Instrumen penilaian juga memberikan gambaran kemampuan peserta didik dalam mengerjakan tugas secara mandiri maupun kelompok. Dengan demikian, penilaian tidak hanya berfokus pada hasil akhir, tetapi juga memperhatikan proses pemahaman, ketepatan pengerjaan, keaktifan, dan kemampuan peserta didik dalam menerapkan materi pada situasi yang kontekstual.",
+      "pdfs": [
+        "https://drive.google.com/file/d/1a5WPKXT45gdPcmnf2xEcj9639V4ps1PV/view?usp=sharing",
+        "https://drive.google.com/file/d/1LmalbeUxyCv06_zulELSfcJ806Ry-1Js/view?usp=sharing"
+      ]
+    },
+    "mandiri/siklus-3/modul": {
+      "analisis": "Modul ajar Siklus 3 dirancang untuk pembelajaran Bahasa Jawa kelas V dengan materi Dolanan Tradisional dan Unsur Cerita Rakyat yang dilaksanakan dalam 3 pertemuan. Pembelajaran disusun secara bertahap, mulai dari mengenal pengertian, jenis, aturan, dan nilai karakter dalam dolanan tradisional, kemudian mengidentifikasi unsur-unsur cerita rakyat seperti tokoh, penokohan, latar, alur, tema, dan amanat, hingga mengintegrasikan nilai dari dolanan tradisional dan cerita rakyat dengan kehidupan sehari-hari. Model pembelajaran yang digunakan adalah Project Based Learning (PjBL) sederhana dengan menghasilkan produk berupa Kartu Dolanan, Peta Cerita, dan karya perbandingan nilai budaya. Pembelajaran juga dilengkapi dengan asesmen diagnostik, formatif, dan akhir serta kegiatan remedial dan pengayaan sehingga dapat menyesuaikan dengan kemampuan peserta didik.",
+      "pdf": "https://drive.google.com/file/d/1xWs-CiMHkySOOPkjKiAi7Q6enqMUrdFN/view?usp=sharing"
+    },
+    "mandiri/siklus-3/media": {
+      "analisis": "Media pembelajaran pada Siklus 3 disesuaikan dengan karakteristik peserta didik kelas V yang belajar melalui benda atau gambar konkret, aktivitas gerak, dan kerja kelompok. Media yang digunakan meliputi gambar atau kartu dolanan tradisional, teks cerita rakyat “Timun Mas”, kertas karton atau plano, spidol, lem, papan tulis, lembar kerja kelompok, serta video atau audio apabila tersedia. Media tersebut membantu peserta didik memahami materi secara lebih konkret dan menarik. Gambar dan kartu digunakan untuk mengenalkan berbagai dolanan tradisional, sedangkan teks cerita dan Peta Cerita membantu peserta didik mengidentifikasi unsur-unsur cerita rakyat. Penggunaan media juga mendukung kegiatan proyek, diskusi, simulasi dolanan, dan presentasi sehingga peserta didik tidak hanya menerima materi, tetapi aktif menghasilkan karya dan menyampaikan hasil pemahamannya.",
+      "pdf": "https://drive.google.com/file/d/1GnenSjLdVvno5fw-qaH5id5mqJ4sKqpA/view?usp=sharing"
+    },
+    "mandiri/siklus-3/video": {
+      "youtube": "https://youtu.be/b8bRIYD2t7o",
+      "identitas": {
+        "Materi": "Dolanan Tradisional dan Unsur Cerita Rakyat",
+        "Kelas": "V SD",
+        "Waktu pelaksanaan": "24 Agustus 2026",
+        "Durasi": "2 jam",
+        "Model/metode pembelajaran": "Project Based Learning (PjBL) sederhana, tanya jawab, diskusi, membaca, menyimak, demonstrasi, permainan edukatif/simulasi dolanan, kerja kelompok, penugasan, presentasi, dan refleksi."
+      },
+      "analisis": "Video pembelajaran Siklus 3 menampilkan proses pembelajaran Bahasa Jawa kelas V yang mengintegrasikan materi dolanan tradisional dan unsur cerita rakyat melalui kegiatan yang aktif dan kontekstual. Pada pertemuan pertama, peserta didik mengamati gambar atau video dolanan tradisional, berdiskusi, membuat Kartu Dolanan, dan melakukan simulasi dolanan secara sederhana. Pada pertemuan kedua, peserta didik menyimak cerita rakyat “Timun Mas”, kemudian bekerja dalam kelompok untuk mengidentifikasi tokoh, penokohan, latar, alur, tema, dan amanat melalui Peta Cerita. Pada pertemuan ketiga, peserta didik membandingkan nilai budaya yang terdapat dalam dolanan tradisional dan cerita rakyat, membuat karya perbandingan nilai, mempresentasikan hasilnya, serta melakukan asesmen akhir dan refleksi. Rangkaian kegiatan tersebut menunjukkan pembelajaran yang berpusat pada peserta didik, kolaboratif, kontekstual, dan memberikan kesempatan kepada peserta didik untuk memahami serta menghargai budaya Jawa."
+    },
+    "mandiri/siklus-3/instrumen": {
+      "analisis": "Instrumen penilaian pada Siklus 3 disusun dalam bentuk LKPD yang digunakan secara bertahap pada setiap pertemuan. Pada Pertemuan 1, LKPD digunakan untuk menilai pemahaman siswa mengenai dolanan tradisional, meliputi pengenalan jenis, aturan, dan cara bermain dolanan tradisional. Pada Pertemuan 2, penilaian difokuskan pada materi cerita rakyat, terutama pemahaman siswa terhadap unsur dan isi cerita. Selanjutnya, pada Pertemuan 3, LKPD mengintegrasikan materi cerita rakyat dan dolanan tradisional sehingga siswa dapat menghubungkan kedua materi tersebut dalam kegiatan pembelajaran. Instrumen ini tidak hanya menilai pemahaman pengetahuan, tetapi juga kemampuan siswa dalam mengerjakan tugas, memahami informasi, dan mengaitkan materi dengan konteks budaya Jawa. Penggunaan LKPD secara bertahap membantu guru melihat perkembangan pemahaman siswa dari setiap pertemuan serta memberikan gambaran terhadap ketercapaian tujuan pembelajaran pada Siklus 3.",
+      "pdfs": [
+        "https://drive.google.com/file/d/1dI7f6xlXipZnjU-nFCFOqPX6q21sTo1e/view?usp=sharing",
+        "https://drive.google.com/file/d/1OYIA4TOJJsRbh02cdYm1PPRY4cV2N9ev/view?usp=sharing",
+        "https://drive.google.com/file/d/19X0FkHa79-jbewQi5TBC1g1ee2TDzGjG/view?usp=sharing"
+      ]
+    },
+    "mandiri/siklus-4/modul": {
+      "analisis": "Modul ajar Siklus 4 disusun untuk mata pelajaran Seni Budaya kelas VI dengan materi karya seni makrame dan anyaman. Modul ini dirancang untuk dua pertemuan dengan menggunakan model Project-Based Learning (PjBL) yang dipadukan dengan metode demonstrasi, praktik langsung, diskusi, observasi, presentasi, dan refleksi. Tujuan pembelajaran tidak hanya berfokus pada pemahaman konsep, tetapi juga memberikan kesempatan kepada peserta didik untuk mengenali bahan dan teknik, mempraktikkan pembuatan karya, serta mengembangkan sikap kreatif, teliti, sabar, bertanggung jawab, dan menghargai karya orang lain. Kegiatan pembelajaran disusun secara bertahap mulai dari pengamatan dan pemahaman konsep, praktik berkarya, hingga apresiasi dan refleksi. Asesmen dilakukan melalui asesmen diagnostik, formatif, penilaian produk, dan asesmen akhir sehingga dapat memberikan gambaran mengenai proses dan hasil belajar peserta didik. Modul juga memanfaatkan media digital berupa slide dan video tutorial serta mengaitkan pembelajaran dengan budaya lokal, matematika, dan kehidupan sehari-hari. Secara keseluruhan, modul ajar telah disusun secara sistematis dan sesuai dengan karakteristik pembelajaran Seni Budaya yang menekankan pengalaman langsung, kreativitas, keterampilan motorik, dan apresiasi terhadap karya seni.",
+      "pdf": "https://drive.google.com/file/d/13MqDK5oFeOUlLul5HkpDBrZLndIgdtRm/view?usp=sharing"
+    },
+    "mandiri/siklus-4/media": {
+      "analisis": "Media pembelajaran pada Siklus 4 digunakan untuk membantu peserta didik memahami materi karya seni makrame dan anyaman secara lebih konkret dan menarik. Media berupa slide/gambar contoh karya seni kriya serta video tutorial membantu peserta didik mengamati bentuk, bahan, teknik, pola, dan langkah pembuatan karya sebelum melakukan praktik secara langsung. Penggunaan media visual juga memudahkan guru dalam memberikan contoh teknik simpul pada makrame dan pola tumpang tindih pada anyaman sehingga peserta didik memiliki gambaran yang jelas sebelum mengerjakan tugas. Media tersebut mendukung penerapan model Project-Based Learning karena peserta didik tidak hanya menerima penjelasan, tetapi juga mengamati, mencoba, menghasilkan karya, dan melakukan apresiasi terhadap hasil karya. Secara keseluruhan, media pembelajaran yang digunakan sesuai dengan karakteristik materi dan membantu menciptakan pembelajaran yang lebih konkret, interaktif, dan berpusat pada peserta didik.",
+      "pdf": "https://drive.google.com/file/d/1t6uBo59rRtqAS_cM9zj62eqBGLVXrFZ5/view?usp=sharing"
+    },
+    "mandiri/siklus-4/video": {
+      "youtube": "https://youtu.be/mSjaYaWOKVg",
+      "identitas": {
+        "Materi": "Karya Seni Makrame dan Anyaman",
+        "Kelas": "VI (Enam)",
+        "Waktu pelaksanaan": "23 September 2026",
+        "Durasi": "20 menit",
+        "Model/metode pembelajaran": "Project-Based Learning (PjBL), demonstrasi, praktik langsung, diskusi, observasi, presentasi, dan refleksi."
+      },
+      "analisis": "Video pembelajaran Siklus 4 menunjukkan pelaksanaan pembelajaran Seni Budaya kelas VI dengan materi karya seni makrame dan anyaman. Pembelajaran dilaksanakan dengan pendekatan Project-Based Learning yang memberikan kesempatan kepada peserta didik untuk mengamati contoh karya, memahami bahan dan teknik, mengikuti demonstrasi guru, kemudian mempraktikkan pembuatan karya secara langsung. Peserta didik terlibat dalam kegiatan secara aktif melalui praktik, diskusi, kerja sama, dan penyampaian hasil karya. Guru berperan sebagai fasilitator yang memberikan arahan, mendemonstrasikan teknik, memantau proses kerja, serta memberikan umpan balik ketika peserta didik mengalami kesulitan. Kegiatan diakhiri dengan menampilkan dan mengapresiasi hasil karya serta melakukan refleksi terhadap pengalaman belajar. Berdasarkan pelaksanaan tersebut, pembelajaran sudah memberikan pengalaman belajar yang bermakna karena mengembangkan pengetahuan, keterampilan, kreativitas, ketelitian, kerja sama, dan rasa percaya diri peserta didik."
+    },
+    "mandiri/siklus-4/instrumen": {
+      "analisis": "Instrumen penilaian pada Siklus 4 disusun untuk mengukur ketercapaian pembelajaran Seni Budaya kelas VI pada materi karya seni makrame dan anyaman. Pada Pertemuan 1, instrumen digunakan untuk menilai pemahaman dan keterampilan peserta didik dalam mengenal bahan, alat, teknik dasar simpul, serta proses pembuatan karya makrame. Penilaian tidak hanya memperhatikan hasil akhir, tetapi juga proses kerja peserta didik, seperti ketelitian, kerapian, kreativitas, tanggung jawab, dan kemampuan mengikuti langkah kerja dengan benar. Pada Pertemuan 2, instrumen penilaian digunakan untuk mengukur pemahaman dan keterampilan peserta didik dalam mengenal bahan, pola, teknik dasar anyaman, serta menghasilkan karya anyaman sederhana. Penilaian juga mencakup aspek kreativitas, kerapian, ketepatan pola, ketekunan, dan kemampuan peserta didik dalam menjelaskan hasil karyanya. Secara keseluruhan, instrumen penilaian pada Siklus 4 telah disusun secara menyeluruh karena menilai aspek pengetahuan, keterampilan, dan sikap selama proses pembelajaran, sehingga dapat memberikan gambaran yang lebih utuh mengenai perkembangan dan ketercapaian kompetensi peserta didik.",
+      "pdfs": [
+        "https://drive.google.com/file/d/1-ks6vHr4A35ApeUhhKFtHU3qb-GG-W-X/view?usp=sharing",
+        "https://drive.google.com/file/d/1-tjp_VHjaodGiSXbUfCvOC9UuXlpNQHx/view?usp=sharing"
+      ]
+    },
+    "nonmengajar": {
+      "foto": [
+        {
+          "src": "https://drive.google.com/file/d/1FNyUEb_SrPXJu2w2fq57_cg5_uVpRM6q/view?usp=sharing",
+          "caption": "Jalan Sehat bersama murid-murid SD 7 Gondosari"
+        },
+        {
+          "src": "https://drive.google.com/file/d/1VPasLGUg56ww7EHOXsjWS_tw0wQ3yxud/view?usp=drive_link",
+          "caption": "Jalan Sehat – mendampingi murid dan membantu mengatur lalu lintas"
+        },
+        {
+          "src": "https://drive.google.com/file/d/1n795d43y6sFzuz5seQVOf45yNg4BMFme/view?usp=drive_link",
+          "caption": "Market Day – kedai yang dikelola orang tua murid"
+        },
+        {
+          "src": "https://drive.google.com/file/d/1Mc72PQ7f8X84QZchrx5NrCTX_NM8geEX/view?usp=drive_link",
+          "caption": "Market Day – murid berbelanja di kedai"
+        },
+        {
+          "src": "https://drive.google.com/file/d/1HgpbcxO1Apg2hUyt1pSZNKya_M6k1_GL/view?usp=drive_link",
+          "caption": "Pembiasaan membaca Asmaul Husna bersama guru dan peserta didik"
+        },
+        {
+          "src": "https://drive.google.com/file/d/188bRLfHctvsOj5lB4yzAYlx--0o7VX2A/view?usp=drive_link",
+          "caption": "Pembiasaan membaca Asmaul Husna sebelum pembelajaran dimulai"
+        },
+        {
+          "src": "https://drive.google.com/file/d/1hd9CfswtO4CLn4gWAUTnrN3RJNIwMOVY/view?usp=sharing",
+          "caption": "Pendampingan Lomba Gerak Jalan – mendampingi siswa latihan untuk meningkatkan kekompakan, kedisiplinan, dan kesiapan sebelum lomba"
+        },
+        {
+          "src": "https://drive.google.com/file/d/1bGcq81cZhS-kHJDidP65F8Mq_Kr5f4CG/view?usp=sharing",
+          "caption": "Latihan Lomba Gerak Jalan, 18 Agustus 2026"
+        },
+        {
+          "src": "https://drive.google.com/file/d/11hLGfLN1uSPuQPBJswEiB61yUMTQFIl_/view?usp=sharing",
+          "caption": "Mendampingi lomba sepak bola di SSA (Rendeng)"
+        },
+        {
+          "src": "https://drive.google.com/file/d/1OcSkrpQvO6MvoGi15mQLMEc-fJapo89C/view?usp=sharing",
+          "caption": "Pendampingan lomba sepak bola di SSA (Rendeng), 15 Oktober 2026"
+        }
+      ],
+      "kegiatan": [
+        {
+          "nama": "Jalan Sehat",
+          "tanggal": "5 Juni 2025",
+          "deskripsi": "Kegiatan jalan sehat dilaksanakan bersama murid-murid SD 7 Gondosari dengan rute Jalan PR Sukun. Kegiatan ini bertujuan untuk menjaga kebugaran tubuh sekaligus membangun kebersamaan dan interaksi positif antara guru dan murid di luar kegiatan pembelajaran di kelas.",
+          "peran": "Saya berperan mendampingi anak-anak selama kegiatan serta membantu mengatur lalu lintas agar perjalanan tetap aman dan tertib bagi seluruh peserta jalan sehat.",
+          "hasil": "Kegiatan jalan sehat dapat terlaksana dengan baik, tertib, dan aman. Murid-murid mengikuti kegiatan dengan antusias dan mendapatkan pengalaman beraktivitas bersama di luar kelas.",
+          "refleksi": "Melalui kegiatan ini, saya belajar bahwa peran guru tidak hanya terbatas pada kegiatan pembelajaran di kelas, tetapi juga mencakup pendampingan dan memastikan keselamatan peserta didik dalam berbagai kegiatan sekolah. Saya juga belajar pentingnya kerja sama, komunikasi, dan kepedulian terhadap keselamatan murid.",
+          "foto": "https://drive.google.com/file/d/1FNyUEb_SrPXJu2w2fq57_cg5_uVpRM6q/view?usp=sharing"
+        },
+        {
+          "nama": "Market Day",
+          "tanggal": "21 Mei 2026",
+          "deskripsi": "Market Day merupakan kegiatan sekolah yang melibatkan orang tua murid dari kelas 1 sampai kelas 6 untuk membuat dan mengelola kedai atau tempat berjualan. Para pembeli dalam kegiatan ini adalah murid-murid. Kegiatan diawali dengan jalan santai bersama sebagai bagian dari rangkaian kegiatan. Market Day menjadi sarana untuk menciptakan suasana kebersamaan antara guru, murid, dan orang tua sekaligus memberikan pengalaman belajar yang menyenangkan bagi peserta didik.",
+          "peran": "Saya berperan dalam membantu menyiapkan dan mendukung pelaksanaan acara Market Day agar kegiatan dapat berjalan dengan tertib dan lancar.",
+          "hasil": "Kegiatan Market Day dapat terlaksana dengan baik dan mendapat antusiasme dari murid, orang tua, serta warga sekolah. Kegiatan berlangsung meriah dan memberikan pengalaman langsung kepada murid untuk berinteraksi dalam kegiatan jual beli. Selain itu, kegiatan ini juga mempererat kebersamaan dan kerja sama antara sekolah, orang tua, dan peserta didik.",
+          "refleksi": "Melalui kegiatan Market Day, saya memperoleh pengalaman bahwa kegiatan nonmengajar juga memiliki peran penting dalam mendukung perkembangan peserta didik. Kegiatan ini tidak hanya menciptakan kebersamaan, tetapi juga memberikan kesempatan kepada murid untuk belajar berinteraksi, bekerja sama, dan bertanggung jawab dalam situasi nyata. Saya juga belajar pentingnya persiapan dan kerja sama dalam mendukung keberhasilan suatu kegiatan sekolah.",
+          "foto": "https://drive.google.com/file/d/1n795d43y6sFzuz5seQVOf45yNg4BMFme/view?usp=drive_link"
+        },
+        {
+          "nama": "Pembiasaan Membaca Asmaul Husna",
+          "tanggal": "Setiap hari Selasa",
+          "deskripsi": "Pembiasaan membaca Asmaul Husna dilaksanakan setiap hari Selasa sebelum proses pembelajaran dimulai. Kegiatan dilakukan bersama oleh guru dan peserta didik sebagai bagian dari pembiasaan positif di lingkungan sekolah. Peserta didik mengikuti kegiatan dengan membaca Asmaul Husna secara bersama-sama sebelum memasuki kegiatan pembelajaran.",
+          "peran": "Saya berperan dalam mengikuti dan mendampingi peserta didik selama kegiatan pembiasaan membaca Asmaul Husna serta membantu menjaga ketertiban dan kekhidmatan kegiatan agar dapat berlangsung dengan baik.",
+          "hasil": "Kegiatan pembiasaan membaca Asmaul Husna dapat terlaksana dengan tertib dan lancar. Peserta didik mengikuti kegiatan bersama guru sebelum pembelajaran dimulai sehingga tercipta suasana yang lebih tenang dan siap untuk mengikuti proses pembelajaran.",
+          "refleksi": "Melalui kegiatan ini, saya menyadari bahwa pembiasaan sederhana sebelum pembelajaran dapat membantu membangun suasana sekolah yang positif. Kegiatan membaca Asmaul Husna juga menjadi sarana untuk membiasakan peserta didik mengikuti kegiatan secara bersama-sama, tertib, dan disiplin. Sebagai calon guru, saya belajar bahwa pembentukan karakter peserta didik tidak hanya dilakukan melalui kegiatan pembelajaran di kelas, tetapi juga melalui kegiatan pembiasaan di lingkungan sekolah.",
+          "foto": "https://drive.google.com/file/d/1HgpbcxO1Apg2hUyt1pSZNKya_M6k1_GL/view?usp=drive_link"
+        },
+        {
+          "nama": "Mendampingi Anak-Anak dalam Latihan Lomba Gerak Jalan",
+          "tanggal": "18 Agustus 2026",
+          "deskripsi": "Kegiatan nonmengajar ini berupa pendampingan siswa dalam latihan lomba gerak jalan. Pendampingan dilakukan untuk membantu siswa mempersiapkan diri sebelum mengikuti perlombaan, terutama dalam hal kekompakan barisan, ketepatan gerakan, kedisiplinan, serta mengikuti aba-aba selama latihan. Kegiatan juga dilakukan untuk memberikan motivasi kepada siswa agar lebih percaya diri dan bersemangat dalam mengikuti lomba.",
+          "peran": "Saya berperan dalam mendampingi dan mengarahkan siswa selama proses latihan gerak jalan. Saya membantu mengingatkan siswa agar tetap tertib dalam barisan, mengikuti aba-aba, menjaga kekompakan langkah, serta memberikan motivasi ketika siswa mengalami kesulitan atau mulai kehilangan konsentrasi.",
+          "hasil": "Kegiatan latihan berjalan dengan baik dan siswa menunjukkan antusiasme dalam mengikuti latihan. Siswa menjadi lebih memahami pentingnya kekompakan, kedisiplinan, dan kerja sama dalam gerak jalan. Setelah mendapatkan pendampingan dan arahan, siswa terlihat lebih tertib dalam barisan dan lebih percaya diri dalam melakukan gerakan.",
+          "refleksi": "Melalui kegiatan ini, saya menyadari bahwa peran guru tidak hanya terbatas pada kegiatan pembelajaran di dalam kelas, tetapi juga mencakup pendampingan siswa dalam kegiatan di luar pembelajaran. Kegiatan gerak jalan memberikan pengalaman bagi saya untuk melatih kesabaran, komunikasi, dan kemampuan dalam membimbing siswa secara langsung. Saya juga belajar bahwa dukungan dan motivasi dari guru dapat membantu meningkatkan semangat serta kepercayaan diri siswa.",
+          "foto": "https://drive.google.com/file/d/1bGcq81cZhS-kHJDidP65F8Mq_Kr5f4CG/view?usp=sharing"
+        },
+        {
+          "nama": "Mendampingi lomba sepak bola di SSA (Rendeng)",
+          "tanggal": "15 Oktober 2026",
+          "deskripsi": "Kegiatan nonmengajar berupa pendampingan peserta didik dalam mengikuti lomba sepak bola di SSA (Rendeng). Kegiatan ini dilakukan sebagai bentuk dukungan terhadap aktivitas dan pengembangan potensi peserta didik di bidang olahraga. Selama kegiatan berlangsung, peserta didik diberikan arahan untuk tetap disiplin, menjaga sportivitas, mematuhi aturan pertandingan, serta menjaga kekompakan dan semangat selama mengikuti perlombaan.",
+          "peran": "Berperan sebagai pendamping yang memberikan dukungan, motivasi, dan arahan kepada peserta didik selama mengikuti lomba. Selain itu, membantu mengingatkan peserta didik untuk menjaga kedisiplinan, sportivitas, kerja sama, dan sikap yang baik selama kegiatan berlangsung.",
+          "hasil": "Kegiatan pendampingan berjalan dengan baik dan peserta didik mengikuti perlombaan dengan antusias. Peserta didik menunjukkan semangat, kerja sama, dan sportivitas selama mengikuti pertandingan. Kegiatan ini juga memberikan pengalaman kepada peserta didik untuk belajar bertanggung jawab, menghargai lawan, dan menerima hasil pertandingan dengan sikap positif.",
+          "refleksi": "Kegiatan ini memberikan pengalaman bahwa peran guru tidak hanya terbatas pada kegiatan pembelajaran di dalam kelas, tetapi juga mencakup pendampingan peserta didik dalam kegiatan pengembangan bakat dan karakter. Melalui kegiatan olahraga, peserta didik dapat belajar tentang disiplin, kerja sama, sportivitas, tanggung jawab, dan percaya diri. Saya juga belajar bahwa kehadiran dan dukungan guru dapat memberikan motivasi kepada peserta didik dalam mengikuti kegiatan di luar pembelajaran.",
+          "foto": "https://drive.google.com/file/d/1OcSkrpQvO6MvoGi15mQLMEc-fJapo89C/view?usp=sharing"
+        }
+      ]
+    }
+  }
+};
+/* ===================== AKHIR CONFIG ===================== */
+
+const LBL = {
+  ajar:["Kesesuaian dengan tujuan pembelajaran","Kesesuaian dengan karakteristik peserta didik","Kesesuaian kegiatan pembelajaran","Kesesuaian asesmen","Kelebihan","Kekurangan","Hasil refleksi","Rencana perbaikan"],
+  materi:["Kesesuaian materi dengan tujuan pembelajaran","Ketepatan dan kedalaman materi","Kesesuaian dengan tingkat perkembangan siswa","Keterkaitan dengan kehidupan sehari-hari","Kelebihan materi","Kekurangan materi","Perbaikan yang dilakukan"],
+  media:["Alasan pemilihan media","Kesesuaian dengan tujuan pembelajaran","Kesesuaian dengan karakteristik siswa","Keterlibatan siswa","Efektivitas media","Kelebihan","Kekurangan","Kendala penggunaan","Solusi/perbaikan"],
+  video:["Pembukaan pembelajaran","Penyampaian tujuan","Penguasaan materi","Strategi/metode pembelajaran","Penggunaan media","Interaksi guru dan siswa","Keaktifan siswa","Pengelolaan kelas","Asesmen","Penutup pembelajaran","Kelebihan","Kekurangan","Hal yang perlu diperbaiki"],
+  instrumen:["Tujuan penilaian","Kesesuaian indikator","Kesesuaian instrumen dengan tujuan pembelajaran","Teknik penilaian","Kriteria penilaian","Kelebihan","Kekurangan","Hasil penggunaan","Rencana perbaikan"]
+};
+const IDV = ["Materi","Kelas","Waktu pelaksanaan","Durasi","Model/metode pembelajaran"];
+const TERB = [["perangkat-ajar","Analisis Perangkat Ajar","doc","ajar"],["materi","Analisis Materi Pembelajaran","doc","materi"],["media","Analisis Media Pembelajaran","ytmedia","media"],["video","Analisis Video Pembelajaran","video","video"],["instrumen","Instrumen Penilaian","doc","instrumen"]];
+const INS = {"terbimbing":3, "mandiri/siklus-1":2, "mandiri/siklus-2":2, "mandiri/siklus-3":3, "mandiri/siklus-4":2};
+const MAND = [["modul","Analisis Modul Ajar","doc","ajar"],["media","Analisis Media Pembelajaran","doc","media"],["video","Analisis Video Pembelajaran","video","video"],["instrumen","Instrumen Penilaian","doc","instrumen"]];
+const ICON = {doc:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',
+ video:'<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3z"/>',
+ gal:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/>',
+ menu:'<path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/>'};
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const ph = u => !u || /^\s*\[.*\]\s*$/.test(u);
+const V = (v, d) => ph(v) ? `<span class="ph">${esc(v || d || "[belum diisi]")}</span>` : esc(v);
+const driveId = u => { const m = String(u).match(/\/d\/([\w-]+)|[?&]id=([\w-]+)/); return m ? (m[1] || m[2]) : null; };
+const ytId = u => { const m = String(u).match(/(?:v=|youtu\.be\/|shorts\/|embed\/)([\w-]{11})/); return m ? m[1] : null; };
+const imgUrl = u => { if (ph(u)) return null; const id = driveId(u); return id ? `https://drive.google.com/thumbnail?id=${id}&sz=w1600` : u; };
+const cap = ico => `<svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${ICON.menu}</svg>`;
+const avatar = (cls = "") => { const u = imgUrl(C.foto); return u ? `<img class="avatar ${cls}" src="${esc(u)}" alt="Foto ${esc(C.nama)}" referrerpolicy="no-referrer">` : `<div class="avatar ${cls}" role="img" aria-label="Foto profil belum ditambahkan">${cap()}</div>`; };
+const crumbs = arr => "";
+const _crumbsLama = arr => `<nav class="crumb wrap" aria-label="Breadcrumb"><a href="#/">Beranda</a>${arr.map(([t, h]) => ` / ${h ? `<a href="${h}">${esc(t)}</a>` : esc(t)}`).join("")}</nav>`;
+const head = (t, d) => `<div class="banner"><div class="wrap pagehead"><h1>${t}</h1>${d ? `<p>${V(d)}</p>` : ""}</div></div>`;
+const cards = (base, list, extra = "") => `<div class="wrap" style="padding-bottom:20px"><div class="grid">${list.map(([k, t, ty]) => `<a class="mc" href="#/${base}/${k}"><svg viewBox="0 0 24 24" aria-hidden="true">${ICON[ty] || ICON.doc}</svg><span><b>${t}</b><small>Buka halaman</small></span></a>`).join("")}</div></div>`;
+
+function analisis(labels, d, title) {
+  const a = d.analisis;
+  const txt = (a && typeof a === "object") ? Object.values(a).filter(x => !ph(x)).join("\n\n") : a;
+  return `<div class="card ana"><h2>${title}</h2><p>${V(txt, "[TEKS ANALISIS]")}</p></div>`;
+}
+function docSec(t, labels, d, ph0, n) {
+  const btn = (txt, href, cls = "") => `<a class="btn ${cls}" ${href ? `href="${href}" target="_blank" rel="noopener"` : `aria-disabled="true"`}>${txt}</a>`;
+  let list = Array.isArray(d.pdfs) ? d.pdfs.slice() : (d.pdf ? [d.pdf] : []);
+  const total = Math.max(n || 1, list.length);
+  const one = (it, i) => {
+    const url = (it && typeof it === "object") ? it.pdf : it;
+    const judul = (it && typeof it === "object" && it.judul) ? it.judul : (total > 1 ? `${t.replace(/^Analisis /, "")} – Pertemuan ${i + 1}` : "");
+    const id = ph(url) ? null : driveId(url);
+    const view = id ? `https://drive.google.com/file/d/${id}/view` : null;
+    return `${judul ? `<h2 style="margin:8px 0 14px">${esc(judul)}</h2>` : ""}<div class="two" style="margin-bottom:26px"><div class="card">${id ? `<iframe class="prev" title="Pratinjau ${esc(judul || t)}" loading="lazy" src="https://drive.google.com/file/d/${id}/preview"></iframe>` : `<div class="empty"><div><b>Dokumen belum ditambahkan</b><br>Isi link PDF di bagian CONFIG.</div></div>`}</div>
+   <div class="card side"><h3>Akses dokumen</h3>${btn("Buka PDF", id && `https://drive.google.com/file/d/${id}/preview`)}${btn("Download PDF", id && `https://drive.google.com/uc?export=download&id=${id}`, "alt")}${btn("Buka di Google Drive", view, "alt")}</div></div>`;
+  };
+  return `<div class="wrap">${Array.from({ length: total }, (_, i) => one(list[i], i)).join("")}
+   ${analisis(labels, d, "Analisis " + t.replace(/^Analisis /, ""))}</div>`;
+}
+function ytMediaSec(t, labels, d) {
+  let list = Array.isArray(d.youtubes) ? d.youtubes.slice() : (d.youtube ? [d.youtube] : []);
+  if (!list.length) list = [null];
+  const one = (it, i) => {
+    const url = (it && typeof it === "object") ? it.youtube : it;
+    const judul = (it && typeof it === "object" && it.judul) ? it.judul : (list.length > 1 ? `Media Pembelajaran ${i + 1}` : "");
+    const id = ph(url) ? null : ytId(url);
+    return `<div class="card">${judul ? `<h2>${esc(judul)}</h2>` : ""}${id ? `<div class="vid"><iframe title="${esc(judul || t)}" loading="lazy" src="https://www.youtube.com/embed/${id}" allow="accelerometer;encrypted-media;picture-in-picture" allowfullscreen></iframe></div><p style="margin:14px 0 0"><a class="btn alt" href="https://youtu.be/${id}" target="_blank" rel="noopener">Buka di YouTube</a></p>` : `<div class="vid empty"><div><b>Link YouTube media belum ditambahkan</b><br>Isi link YouTube di bagian CONFIG.</div></div>`}</div>`;
+  };
+  return `<div class="wrap">${list.map(one).join("")}
+   ${analisis(labels, d, "Analisis Media Pembelajaran")}</div>`;
+}
+function vidSec(t, labels, d) {
+  const id = ph(d.youtube) ? null : ytId(d.youtube);
+  const idn = d.identitas || {};
+  return `<div class="wrap"><div class="card">${id ? `<div class="vid"><iframe title="${esc(t)}" loading="lazy" src="https://www.youtube.com/embed/${id}" allow="accelerometer;encrypted-media;picture-in-picture" allowfullscreen></iframe></div>` : `<div class="vid empty"><div><b>Video belum ditambahkan</b><br>Isi link YouTube di bagian CONFIG.</div></div>`}</div>
+   <div class="card"><h2>Identitas Video</h2><table>${IDV.map(k => `<tr><td>${k}</td><td>${V(idn[k], "[ISI DI SINI]")}</td></tr>`).join("")}</table></div>
+   ${analisis(labels, d, "Analisis Video Pembelajaran")}</div>`;
+}
+let GAL = [];
+function galSec(d, noAdd) {
+  GAL = (d.foto || []).map(f => ({ src: imgUrl(f.src), caption: f.caption || "" })).filter(f => f.src);
+  const ks = d.kegiatan && d.kegiatan.length ? d.kegiatan : [{}];
+  return `<div class="wrap"><div class="card"><h2>Galeri Foto</h2>${GAL.length ? `<div class="gal">${GAL.map((f, i) => `<button data-lb="${i}" aria-label="Perbesar foto ${i + 1}"><img src="${esc(f.src)}" alt="${esc(f.caption || "Dokumentasi " + (i + 1))}" loading="lazy" referrerpolicy="no-referrer"></button>`).join("")}</div>` : `<div class="empty"><div><b>Foto belum ditambahkan</b><br>Isi [LINK FOTO GOOGLE DRIVE] pada array foto di CONFIG.</div></div>`}
+   ${noAdd ? "" : `<p style="margin:18px 0 0"><button class="btn alt" data-add>+ Tambah Dokumentasi</button></p>`}</div>
+   <div class="card"><h2>Deskripsi Kegiatan</h2>${ks.map(k => { const u = imgUrl(k.foto); return `<div class="act" style="margin-bottom:26px">${u ? `<img src="${esc(u)}" alt="${esc(k.nama || "Kegiatan")}" loading="lazy" referrerpolicy="no-referrer">` : `<div class="noimg">[FOTO KEGIATAN]</div>`}
+   <dl><dt>Nama kegiatan</dt><dd>${V(k.nama, "[NAMA KEGIATAN]")}</dd><dt>Tanggal</dt><dd>${V(k.tanggal, "[TANGGAL]")}</dd><dt>Deskripsi</dt><dd>${V(k.deskripsi, "[DESKRIPSI]")}</dd><dt>Peran yang dilakukan</dt><dd>${V(k.peran, "[PERAN]")}</dd><dt>Hasil kegiatan</dt><dd>${V(k.hasil, "[HASIL]")}</dd><dt>Refleksi singkat</dt><dd>${V(k.refleksi, "[REFLEKSI]")}</dd></dl></div>`; }).join("")}</div></div>`;
+}
+function section(base, def, bc) {
+  const [k, t, ty, lb] = def, d = C.konten[`${base}/${k}`] || {};
+  const body = ty === "ytmedia" ? ytMediaSec(t, LBL[lb], d) : ty === "doc" ? docSec(t, LBL[lb], d, null, k === "instrumen" ? (INS[base] || 1) : 1) : ty === "video" ? vidSec(t, LBL.video, d) : galSec(d);
+  return crumbs(bc.concat([[t]])) + head(t) + body;
+}
+const TL = [["Praktik Terbimbing","#/terbimbing"],["Siklus 1","#/mandiri/siklus-1"],["Siklus 2","#/mandiri/siklus-2"],["Siklus 3","#/mandiri/siklus-3"],["Siklus 4","#/mandiri/siklus-4"],["Kegiatan Non Mengajar","#/nonmengajar"],["Refleksi Diri","#/refleksi"]];
+
+function render() {
+  const p = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean), r = p.join("/");
+  let h = "", title = "E-Portofolio PPG";
+  const S = p[1] && p[1].match(/^siklus-([1-4])$/);
+  if (!r) {
+    h = `<section class="hero"><i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i><div class="wrap"><div><span class="eyebrow">✨ E-Portofolio Guru Profesional</span><h1>Portofolio <span class="grad">PPG</span></h1><p class="sub">Dokumentasi Praktik Pembelajaran, Refleksi, dan Pengembangan Profesional Guru</p><p class="cta"><a class="btn" href="#/profil">LIHAT PORTOFOLIO</a><a class="btn ghost" href="#/refleksi">Refleksi Diri</a></p></div>
+     <div class="pf"><div class="ring"></div>${avatar()}<span class="fb f1">📚 Praktik Terbimbing</span><span class="fb f2">🎥 Video Praktik</span><span class="fb f3">💡 Refleksi</span><b>${V(C.nama)}</b><span>Peserta PPG</span><span>${V(C.lptk)}</span><span>${V(C.sekolah)}</span></div></div>
+     <svg class="wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40c240 60 480 60 720 20s480-50 720 0v20H0z" fill="#F7FBFC"/></svg></section>
+     <div class="wrap"><div class="stats"><div class="stat"><b>${TERB.length}</b><span>Jenis dokumentasi terbimbing</span></div><div class="stat"><b>4</b><span>Siklus praktik mandiri</span></div><div class="stat"><b>${MAND.length}</b><span>Bagian tiap siklus</span></div><div class="stat"><b>${Object.keys(C.refleksi).length}</b><span>Poin refleksi diri</span></div></div></div>
+     <section class="blk"><div class="wrap"><h2>Selamat Datang</h2><p style="max-width:46em">Website ini mendokumentasikan perjalanan praktik pembelajaran selama kegiatan PPG: praktik mengajar, kegiatan nonmengajar, perangkat pembelajaran, media, instrumen penilaian, video praktik, serta refleksi diri.</p><div class="chips"><span>Perangkat ajar</span><span>Materi</span><span>Media</span><span>Video praktik</span><span>Kegiatan nonmengajar</span><span>Instrumen penilaian</span><span>Refleksi</span></div></div></section>
+     <section class="blk"><div class="wrap"><h2>Jelajahi Portofolio</h2><div class="exg"><a class="ex c1" href="#/profil"><i>👤</i><b>Profil</b><small>Identitas dan profil singkat saya</small></a><a class="ex c2" href="#/terbimbing"><i>🧑‍🏫</i><b>Praktik Terbimbing</b><small>Perangkat ajar, materi, media, dan video</small></a><a class="ex c3" href="#/mandiri/siklus-1"><i>🚀</i><b>Praktik Mandiri</b><small>Empat siklus praktik pembelajaran</small></a><a class="ex c2" href="#/nonmengajar"><i>🤝</i><b>Kegiatan Non Mengajar</b><small>Dokumentasi kegiatan di luar kelas</small></a><a class="ex c4" href="#/refleksi"><i>💡</i><b>Refleksi Diri</b><small>Perjalanan dan pembelajaran saya</small></a></div></div></section>
+     <section class="blk"><div class="wrap"><h2>Perjalanan PPG</h2><ol class="tl">${TL.map(([t, l]) => `<li><a href="${l}">${t}</a></li>`).join("")}</ol></div></section>`;
+  } else if (r === "profil") {
+    title = "Profil";
+    h = crumbs([["Profil"]]) + `<div class="wrap" style="padding-top:20px"><div class="card mini">${avatar("lg")}<div><h1>${V(C.nama)}</h1><table><tr><td>Status</td><td>Peserta PPG</td></tr><tr><td>NIM/NIP</td><td>${V(C.nim)}</td></tr><tr><td>Program studi</td><td>${V(C.prodi)}</td></tr><tr><td>LPTK</td><td>${V(C.lptk)}</td></tr><tr><td>Sekolah PPL</td><td>${V(C.sekolah)}</td></tr><tr><td>Tahun pelaksanaan</td><td>${V(C.tahun)}</td></tr></table></div></div>
+     <div class="card"><h2>Profil Singkat</h2><p style="white-space:pre-line">${V(C.profilSingkat)}</p></div>
+     <div class="card"><h2>Tujuan Portofolio</h2><p>Portofolio ini digunakan untuk mendokumentasikan proses, pengalaman, analisis, evaluasi, dan refleksi selama praktik pembelajaran.</p></div></div>`;
+  } else if (r === "terbimbing") {
+    title = "Praktik Pembelajaran Terbimbing";
+    h = crumbs([["Praktik Terbimbing"]]) + head("Praktik Pembelajaran Terbimbing", C.deskTerbimbing) + cards("terbimbing", TERB);
+  } else if (p[0] === "terbimbing" && p.length === 2 && TERB.find(x => x[0] === p[1])) {
+    const d = TERB.find(x => x[0] === p[1]); title = d[1];
+    h = section("terbimbing", d, [["Praktik Terbimbing", "#/terbimbing"]]);
+  } else if (S && p.length === 2) {
+    title = "Siklus " + S[1];
+    h = crumbs([["Praktik Mandiri"], ["Siklus " + S[1]]]) + head(`PRAKTIK PEMBELAJARAN MANDIRI – SIKLUS ${S[1]}`, C.deskSiklus[S[1]]) + cards("mandiri/" + p[1], MAND);
+  } else if (S && p.length === 3 && MAND.find(x => x[0] === p[2])) {
+    const d = MAND.find(x => x[0] === p[2]); title = d[1] + " – Siklus " + S[1];
+    h = section(`mandiri/${p[1]}`, d, [["Praktik Mandiri"], ["Siklus " + S[1], "#/mandiri/" + p[1]]]);
+  } else if (r === "nonmengajar") {
+    title = "Kegiatan Non Mengajar";
+    h = head("Kegiatan Non Mengajar", C.deskNonMengajar) + galSec(C.konten["nonmengajar"] || {}, true);
+  } else if (r === "refleksi") {
+    title = "Refleksi Diri";
+    h = crumbs([["Refleksi Diri"]]) + `<div class="wrap" style="padding-top:20px"><div class="card mini">${avatar("lg")}<div><h1>REFLEKSI DIRI</h1><table><tr><td>Nama</td><td>${V(C.nama)}</td></tr><tr><td>Status</td><td>Peserta PPG</td></tr><tr><td>Sekolah</td><td>${V(C.sekolah)}</td></tr><tr><td>Periode kegiatan</td><td>${V(C.periode)}</td></tr></table></div></div>
+     <h2>Perjalanan dan Refleksi Saya</h2>${Object.entries(C.refleksi).map(([k, v], i) => `<div class="card ana"><h2 style="font-size:1.25rem">${i + 1}. ${esc(k)}</h2><p style="margin-left:0">${V(v, "[TEKS ANALISIS]")}</p></div>`).join("")}
+     <div class="quote">“Setiap pengalaman pembelajaran merupakan proses untuk menjadi guru yang lebih reflektif, adaptif, dan profesional.”</div></div>`;
+  } else {
+    h = `<div class="wrap" style="padding:80px 20px;text-align:center"><h1>Halaman tidak ditemukan</h1><p><a class="btn" href="#/">Kembali ke Beranda</a></p></div>`;
+  }
+  if (r) h += `<div class="wrap" style="padding:10px 20px 0"><a class="btn alt" href="#/">Kembali ke Beranda</a></div>`;
+  $("#app").innerHTML = h;
+  document.title = title + (r ? " | E-Portofolio PPG" : "");
+  document.querySelectorAll("#nav a").forEach(a => {
+    const t = a.getAttribute("href").replace(/^#\/?/, "");
+    const on = t === "" ? r === "" : (r === t || r.startsWith(t + "/"));
+    on ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current");
+  });
+  document.querySelectorAll(".dd > button").forEach(b => b.classList.toggle("active", r.startsWith("mandiri")));
+  $("#nav").classList.remove("open"); $("#burger").setAttribute("aria-expanded", "false");
+  window.scrollTo(0, 0);
+  const rv = document.querySelectorAll(".card,a.mc,a.ex,.stat,.blk h2,.tl li,.quote");
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
+    rv.forEach((el, i) => { el.classList.add("rv"); el.style.transitionDelay = (i % 4) * 70 + "ms"; io.observe(el); });
+  }
+}
+$("#foot").innerHTML = `<b>${V(C.nama)}</b>E-Portfolio PPG<br>${V(C.prodi)}<br>${V(C.lptk)}<br>${V(C.sekolah)}<p>${C.sosial.map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.nama)}</a>`).join("")}</p><p>© 2026 E-Portfolio PPG</p>`;
+
+/* Lightbox */
+let li = 0;
+const lb = $("#lb");
+function showLB(i) { li = (i + GAL.length) % GAL.length; lb.querySelector("img").src = GAL[li].src; lb.querySelector("img").alt = GAL[li].caption; $("#cap").textContent = GAL[li].caption; }
+const closeLB = () => lb.classList.remove("on");
+lb.querySelector(".x").onclick = closeLB; lb.querySelector(".p").onclick = () => showLB(li - 1); lb.querySelector(".n").onclick = () => showLB(li + 1);
+lb.onclick = e => { if (e.target === lb) closeLB(); };
+document.addEventListener("keydown", e => { if (!lb.classList.contains("on")) return; if (e.key === "Escape") closeLB(); if (e.key === "ArrowLeft") showLB(li - 1); if (e.key === "ArrowRight") showLB(li + 1); });
+let sx = 0; lb.addEventListener("touchstart", e => sx = e.touches[0].clientX, { passive: true });
+lb.addEventListener("touchend", e => { const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 50) showLB(li + (dx < 0 ? 1 : -1)); });
+
+/* Tambah Dokumentasi: menghasilkan kode untuk ditempel ke CONFIG */
+function addDlg() {
+  const f = [["src", "Link foto Google Drive"], ["nama", "Nama kegiatan"], ["tanggal", "Tanggal"], ["deskripsi", "Deskripsi"], ["peran", "Peran yang dilakukan"], ["hasil", "Hasil kegiatan"], ["refleksi", "Refleksi singkat"]];
+  const d = $("#dlg");
+  d.innerHTML = `<h2>Tambah Dokumentasi</h2><p class="note">Website ini statis, jadi data tidak tersimpan otomatis. Isi form, salin kode yang muncul, lalu tempel ke bagian <b>CONFIG</b> pada file HTML ini.</p><form method="dialog" id="af">${f.map(([k, l]) => `<label for="f_${k}">${l}</label><input id="f_${k}" name="${k}">`).join("")}<p><button type="button" class="btn" id="gen">Buat kode</button> <button class="btn alt">Tutup</button></p></form><textarea id="out" rows="8" readonly aria-label="Kode hasil" hidden></textarea>`;
+  d.showModal();
+  $("#gen").onclick = () => {
+    const v = k => JSON.stringify($("#f_" + k).value || "");
+    $("#out").hidden = false;
+    $("#out").value = `// Tempel di array "foto":\n{ src:${v("src")}, caption:${v("nama")} },\n\n// Tempel di array "kegiatan":\n{ foto:${v("src")}, nama:${v("nama")}, tanggal:${v("tanggal")}, deskripsi:${v("deskripsi")}, peran:${v("peran")}, hasil:${v("hasil")}, refleksi:${v("refleksi")} },`;
+    $("#out").select();
+  };
+}
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-lb]"); if (b) { showLB(+b.dataset.lb); lb.classList.add("on"); }
+  if (e.target.closest("[data-add]")) addDlg();
+  const dd = e.target.closest(".dd button"); if (dd) dd.parentNode.classList.toggle("open");
+});
+$("#burger").onclick = () => { const o = $("#nav").classList.toggle("open"); $("#burger").setAttribute("aria-expanded", o); };
+$("#top").onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+addEventListener("scroll", () => $("#top").style.display = scrollY > 400 ? "block" : "none", { passive: true });
+addEventListener("hashchange", render);
+render();
+addEventListener("load", () => { const l = $("#loader"); l.style.opacity = 0; setTimeout(() => l.remove(), 400); });
+</script>
+</body>
+</html>
